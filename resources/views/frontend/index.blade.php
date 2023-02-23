@@ -22,7 +22,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="image-layer"
-                            style="background-image: url(assets/images/backgrounds/main-slider-1-1.jpg);"></div>
+                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-1.jpg);"></div>
                         <div class="image-layer-overlay"></div>
                         <div class="container">
                             <div class="swiper-slide-inner">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="image-layer"
-                            style="background-image: url(assets/images/backgrounds/main-slider-1-2.jpg);"></div>
+                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-2.jpg);"></div>
                         <div class="image-layer-overlay"></div>
                         <div class="container">
                             <div class="swiper-slide-inner">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="image-layer"
-                            style="background-image: url(assets/images/backgrounds/main-slider-1-3.jpg);"></div>
+                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-3.jpg);"></div>
                         <div class="image-layer-overlay"></div>
                         <div class="container">
                             <div class="swiper-slide-inner">
@@ -74,43 +74,6 @@
             </div>
         </section>
 
-        <!--Tour Search Start-->
-        <section class="tour-search">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="tour-search-box">
-                            <form class="tour-search-one" action="https://tevily-html.vercel.app/tour-sidebar.html">
-                                <div class="tour-search-one__inner">
-                                    <div class="tour-search-one__inputs">
-                                        <div class="tour-search-one__input-box">
-                                            <label for="place">Where to</label>
-                                            <input type="text" placeholder="Enter keywords" name="place" id="place">
-                                        </div>
-                                        <div class="tour-search-one__input-box">
-                                            <label>When</label>
-                                            <input type="text" placeholder="September" name="when" id="datepicker">
-                                        </div>
-                                        <div class="tour-search-one__input-box tour-search-one__input-box-last">
-                                            <label for="type">Type</label>
-                                            <select class="selectpicker" id="type">
-                                                <option value="Adventure">Adventure</option>
-                                                <option value="Wildlife">Wildlife</option>
-                                                <option value="Sightseeing">Sightseeing</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="tour-search-one__btn-wrap">
-                                        <button type="submit" class="thm-btn tour-search-one__btn">Find now</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Tour Search End-->
 
         <!--Destinations One Start-->
         <section class="destinations-one">
@@ -125,7 +88,7 @@
                             <div class="destinations-one__img">
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-1.png')}}" alt="">
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="destinations-details.html">Spain</a>
+                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Spain</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -140,7 +103,7 @@
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-2.png')}}" alt="">
                                 <div class="destinations-one__content">
                                     <p class="destinations-one__sub-title">Wildlife</p>
-                                    <h2 class="destinations-one__title"><a href="destinations-details.html">Thailand</a>
+                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Thailand</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -154,7 +117,7 @@
                             <div class="destinations-one__img">
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-3.png')}}" alt="">
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="destinations-details.html">Africa</a>
+                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Africa</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -170,7 +133,7 @@
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-4.png')}}" alt="">
                                 <div class="destinations-one__content">
                                     <h2 class="destinations-one__title"><a
-                                            href="destinations-details.html">Australia</a></h2>
+                                            href="{{ route('destination.detail') }}">Australia</a></h2>
                                 </div>
                                 <div class="destinations-one__button">
                                     <a href="#">6 tours</a>
@@ -185,7 +148,7 @@
                                 <div class="destinations-one__content">
                                     <p class="destinations-one__sub-title">Adventure</p>
                                     <h2 class="destinations-one__title"><a
-                                            href="destinations-details.html">Switzerland</a></h2>
+                                            href="{{ route('destination.detail') }}">Switzerland</a></h2>
                                 </div>
                                 <div class="destinations-one__button">
                                     <a href="#">6 tours</a>
@@ -287,7 +250,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -296,13 +259,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -310,7 +273,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -319,13 +282,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">The Dark Forest
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">The Dark Forest
                                             Adventure</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -333,7 +296,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -342,13 +305,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">Discover Depth of
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Discover Depth of
                                             Beach</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -356,7 +319,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -365,13 +328,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">Moscow Red City
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Moscow Red City
                                             Land</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -379,7 +342,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -388,13 +351,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">Magic of Italy
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Magic of Italy
                                             Tours</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -402,7 +365,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -411,13 +374,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -425,7 +388,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -434,13 +397,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">Discover Depth of
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Discover Depth of
                                             Beach</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -448,7 +411,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -457,13 +420,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -471,7 +434,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -480,13 +443,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -494,7 +457,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -503,13 +466,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -517,7 +480,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -526,13 +489,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -540,7 +503,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="tour-details.html">
+                                        <a href="{{ route('tour.details') }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -549,13 +512,13 @@
                                     <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div>
-                                    <h3 class="popular-tours__title"><a href="tour-details.html">National Park 2 Days
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
                                             Tour</a></h3>
                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="tour-details.html">3 Days</a></li>
-                                        <li><a href="tour-details.html">12+</a></li>
-                                        <li><a href="tour-details.html">Los Angeles</a></li>
+                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
+                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
+                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -569,7 +532,7 @@
         <!--Video One Start-->
         <section class="video-one">
             <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                style="background-image: url(assets/images/backgrounds/video-one-bg.jpg)"></div>
+                style="background-image: url(frontend/assets/images/backgrounds/video-one-bg.jpg)"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
@@ -698,423 +661,5 @@
             </div>
         </section>
         <!--Brand One End-->
-
-        <!--Testimonial One Start-->
-        <section class="testimonial-one">
-            <div class="testimonial-one-shape-2 float-bob-y">
-                <img src="{{asset('frontend/assets/images/shapes/testimonial-one-shape-2.png')}}" alt="">
-            </div>
-            <div class="testimonial-one-shape-3 wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms">
-                <img src="{{asset('frontend/assets/images/shapes/testimonial-one-shape-3.png')}}" alt="">
-            </div>
-            <div class="container">
-                <div class="section-title text-center">
-                    <span class="section-title__tagline">Testimonials & reviews</span>
-                    <h2 class="section-title__title">What They’re Saying</h2>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="testimonial-one__carousel owl-theme owl-carousel">
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-1.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Shirley Smith</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-2.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Kevin Martin</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-3.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Jessica Brown</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-1.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Shirley Smith</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-2.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Kevin Martin</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-3.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Jessica Brown</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-1.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Shirley Smith</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-2.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Kevin Martin</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__single">
-                                <div class="testimonial-one__img">
-                                    <img src="{{asset('frontend/assets/images/testimonial/testimonial-one-img-3.png')}}" alt="">
-                                </div>
-                                <div class="testimonail-one__content">
-                                    <div class="testimonial-one__top-revivew-box">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-one__text">This is due to their best service, pricing and
-                                        customer support. It’s throughly refresing to such a personal touch. Duis aute
-                                        irure lupsum reprehenderit.</p>
-                                    <div class="testimonial-one__client-info">
-                                        <h3 class="testimonial-one__client-name">Jessica Brown</h3>
-                                        <p class="testimonial-one__client-title">Customer</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Testimonial One End-->
-
-        <!--Gallery One Start-->
-        <section class="gallery-one">
-            <div class="gallery-one-bg" style="background-image: url(assets/images/shapes/gallery-map.png)"></div>
-            <div class="gallery-one__container-box clearfix">
-                <ul class="list-unstyled gallery-one__content clearfix">
-                    <li class="wow fadeInUp" data-wow-delay="100ms">
-                        <div class="gallery-one__img-box">
-                            <img src="{{asset('frontend/assets/images/gallery/gallery-one-img-1.jpg')}}" alt="">
-                            <div class="gallery-one__iocn">
-                                <a class="img-popup" href="{{asset('frontend/assets/images/gallery/gallery-one-img-1.jpg')}}"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-delay="200ms">
-                        <div class="gallery-one__img-box">
-                            <img src="{{asset('frontend/assets/images/gallery/gallery-one-img-2.jpg')}}" alt="">
-                            <div class="gallery-one__iocn">
-                                <a class="img-popup" href="{{asset('frontend/assets/images/gallery/gallery-one-img-2.jpg')}}"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-delay="300ms">
-                        <div class="gallery-one__img-box">
-                            <img src="{{asset('frontend/assets/images/gallery/gallery-one-img-3.jpg')}}" alt="">
-                            <div class="gallery-one__iocn">
-                                <a class="img-popup" href="{{asset('frontend/assets/images/gallery/gallery-one-img-3.jpg')}}"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-delay="400ms">
-                        <div class="gallery-one__img-box">
-                            <img src="{{asset('frontend/assets/images/gallery/gallery-one-img-4.jpg')}}" alt="">
-                            <div class="gallery-one__iocn">
-                                <a class="img-popup" href="{{asset('frontend/assets/images/gallery/gallery-one-img-4.jpg')}}"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="wow fadeInUp" data-wow-delay="500ms">
-                        <div class="gallery-one__img-box">
-                            <img src="{{asset('frontend/assets/images/gallery/gallery-one-img-5.jpg')}}" alt="">
-                            <div class="gallery-one__iocn">
-                                <a class="img-popup" href="{{asset('frontend/assets/images/gallery/gallery-one-img-5.jpg')}}"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!--Gallery Oned End-->
-
-        <!--Why Choose Start-->
-        <section class="why-choose">
-            <div class="why-choose__container">
-                <div class="why-choose__left">
-                    <div class="why-choose__left-bg"
-                        style="background-image: url(frontend/assets/images/backgrounds/why-choose-left-bg.jpg)"></div>
-                    <div class="why-choose__toggle">
-                        <p>Trips <br> & tours</p>
-                    </div>
-                </div>
-                <div class="why-choose__right">
-                    <div class="why-choose__right-map"
-                        style="background-image: url(frontend/assets/images/shapes/why-choose-right-map.png)"></div>
-                    <div class="why-choose__right-content">
-                        <div class="section-title text-left">
-                            <span class="section-title__tagline">Our benefit lists</span>
-                            <h2 class="section-title__title">Why Choose Tevily</h2>
-                        </div>
-                        <p class="why-choose__right-text">There are many variations of passages of Lorem Ipsum is simply
-                            free text available in the market for you, but the majority have suffered alteration in some
-                            form.</p>
-                        <ul class="list-unstyled why-choose__list">
-                            <li>
-                                <div class="icon">
-                                    <span class="icon-travel"></span>
-                                </div>
-                                <div class="text">
-                                    <h4>Professional and Certified</h4>
-                                    <p>Lorem ipsum is simply free text dolor sit but the majority have suffered amet,
-                                        consectetur notted.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <span class="icon-travel-map"></span>
-                                </div>
-                                <div class="text">
-                                    <h4>Get Instant Tour Bookings</h4>
-                                    <p>Lorem ipsum is simply free text dolor sit but the majority have suffered amet,
-                                        consectetur notted.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Why Choose End-->
-
-        <!--News One Start-->
-        <section class="news-one">
-            <div class="container">
-                <div class="news-one__top">
-                    <div class="row">
-                        <div class="col-xl-9 col-lg-9">
-                            <div class="news-one__top-left">
-                                <div class="section-title text-left">
-                                    <span class="section-title__tagline">From the blog post</span>
-                                    <h2 class="section-title__title">News & Articles</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="news-one__top-right">
-                                <a href="news-details.html" class="news-one__btn thm-btn">View All posts</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-one__bottom">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                            <!--News One Single-->
-                            <div class="news-one__single">
-                                <div class="news-one__img">
-                                    <img src="{{asset('frontend/assets/images/blog/news-one-img-1.jpg')}}" alt="">
-                                    <a href="news-details.html">
-                                        <span class="news-one__plus"></span>
-                                    </a>
-                                    <div class="news-one__date">
-                                        <p>28 <br> <span>Aug</span></p>
-                                    </div>
-                                </div>
-                                <div class="news-one__content">
-                                    <ul class="list-unstyled news-one__meta">
-                                        <li><a href="news-details.html"><i class="far fa-user-circle"></i>Admin</a></li>
-                                        <li><a href="news-details.html"><i class="far fa-comments"></i>2 Comments</a>
-                                        </li>
-                                    </ul>
-                                    <h3 class="news-one__title">
-                                        <a href="news-details.html">Things to See and Do When Visiting Japan</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                            <!--News One Single-->
-                            <div class="news-one__single">
-                                <div class="news-one__img">
-                                    <img src="{{asset('frontend/assets/images/blog/news-one-img-2.jpg')}}" alt="">
-                                    <a href="news-details.html">
-                                        <span class="news-one__plus"></span>
-                                    </a>
-                                    <div class="news-one__date">
-                                        <p>28 <br> <span>Aug</span></p>
-                                    </div>
-                                </div>
-                                <div class="news-one__content">
-                                    <ul class="list-unstyled news-one__meta">
-                                        <li><a href="news-details.html"><i class="far fa-user-circle"></i>Admin</a></li>
-                                        <li><a href="news-details.html"><i class="far fa-comments"></i>2 Comments</a>
-                                        </li>
-                                    </ul>
-                                    <h3 class="news-one__title">
-                                        <a href="news-details.html">Journeys are Best Measured in New Friends</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                            <!--News One Single-->
-                            <div class="news-one__single">
-                                <div class="news-one__img">
-                                    <img src="{{asset('frontend/assets/images/blog/news-one-img-3.jpg')}}" alt="">
-                                    <a href="news-details.html">
-                                        <span class="news-one__plus"></span>
-                                    </a>
-                                    <div class="news-one__date">
-                                        <p>28 <br> <span>Aug</span></p>
-                                    </div>
-                                </div>
-                                <div class="news-one__content">
-                                    <ul class="list-unstyled news-one__meta">
-                                        <li><a href="news-details.html"><i class="far fa-user-circle"></i>Admin</a></li>
-                                        <li><a href="news-details.html"><i class="far fa-comments"></i>2 Comments</a>
-                                        </li>
-                                    </ul>
-                                    <h3 class="news-one__title">
-                                        <a href="news-details.html">Travel the Most Beautiful Places in the World</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--News One End-->
 
     @endsection

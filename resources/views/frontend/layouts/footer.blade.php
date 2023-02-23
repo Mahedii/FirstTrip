@@ -7,7 +7,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <div class="footer-widget__column footer-widget__about">
                             <div class="footer-widget__about-logo">
-                                <a href="index.html"><img src="{{asset('frontend/assets/images/resources/footer-logo.png')}}"
+                                <a href="{{ route('home') }}"><img src="{{asset('frontend/assets/images/resources/footer-logo.png')}}"
                                         alt=""></a>
                             </div>
                             <p class="footer-widget__about-text">Welcome to our Trip and Tour Agency. Lorem
@@ -90,30 +90,6 @@
             </div>
         </div>
     </div>
-    <div class="site-footer__bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="site-footer__bottom-inner">
-                        <div class="site-footer__bottom-left">
-                            <div class="footer-widget__social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="site-footer__bottom-right">
-                            <p>@ All Copyright 2021, <a href="#">Bracket Web</a></p>
-                        </div>
-                        <div class="site-footer__bottom-left-arrow">
-                            <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><span
-                                    class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </footer>
 <!--Site Footer One End-->
