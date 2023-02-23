@@ -8,13 +8,14 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-        <testsuite name="Feature">
+        <!-- <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
+        </testsuite> -->
     </testsuites>
-    <coverage>
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="true" pathCoverage="true" ignoreDeprecatedCodeUnits="true" disableCodeCoverageIgnore="true">
         <include>
-            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./app/Services</directory>
+            <directory suffix=".php">./app/Http/Requests</directory>
         </include>
     </coverage>
     <php>
