@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        
+
         @include('frontend.layouts.title-meta')
 
         @include('frontend.layouts.head-css')
@@ -12,7 +12,7 @@
     <body>
 
         <div class="preloader">
-            <img class="preloader__image" width="60" src="{{asset('frontend/assets/images/loader.png')}}" alt="" />
+            <img class="preloader__image" width="60" src="{{asset('frontend/assets/images/loader.gif')}}" alt="" />
         </div>
         <!-- /.preloader -->
 
@@ -89,11 +89,11 @@
             <!-- /.search-popup__content -->
         </div>
         <!-- /.search-popup -->
-        
+
 
         @include('frontend.layouts.vendor-scripts')
 
-        
+
     </body>
 
 </html>
