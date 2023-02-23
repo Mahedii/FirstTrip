@@ -41,7 +41,7 @@
                 <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
                 <div class="logo-box">
-                    <a href="index.html" aria-label="logo image"><img src="{{asset('frontend/assets/images/resources/logo-2.png')}}" width="155"
+                    <a href="{{ route('home') }}" aria-label="logo image"><img src="{{asset('frontend/assets/images/resources/logo.png')}}" width="155"
                             alt="" /></a>
                 </div>
                 <!-- /.logo-box -->

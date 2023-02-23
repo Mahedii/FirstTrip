@@ -6,7 +6,7 @@
                 <div class="main-menu-wrapper-inner clearfix">
                     <div class="main-menu-wrapper__left clearfix">
                         <div class="main-menu-wrapper__logo">
-                            <a href="{{ route('home') }}"><img src="{{asset('frontend/assets/images/resources/logo-1.png')}}" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="{{asset('frontend/assets/images/resources/logo.png')}}" alt=""></a>
                         </div>
                         <div class="main-menu-wrapper__main-menu">
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
