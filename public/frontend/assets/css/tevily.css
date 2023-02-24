@@ -22,7 +22,7 @@
     --thm-reey-font: 'reeyregular';
     --thm-gray: #787780;
     --thm-gray-rgb: 120, 119, 128;
-    --thm-primary: #e8604c;
+    --thm-primary: #703F98;
     --thm-primary-rgb: 232, 96, 76;
     --thm-black: #313041;
     --thm-black-rgb: 49, 48, 65;
@@ -3625,15 +3625,16 @@ ul {
 
 
 .site-footer__bottom-inner {
-    position: relative;
-    display: flex;
+    /* position: relative;
+    display: flex; */
     align-items: center;
     justify-content: space-between;
     background-color: var(--thm-base);
     border-top-left-radius: 10px;
-    padding: 31px 0;
-    padding-left: 160px;
+    padding: 10px 0;
+    /* padding-left: 160px; */
     z-index: 1;
+    text-align: center;
 }
 
 .site-footer__bottom-inner:before {
@@ -3668,10 +3669,10 @@ ul {
     text-align: center;
     color: var(--thm-black);
     background-color: #faf5ee;
-    border-radius: 50%;
+    border-radius: 10%;
     font-size: 15px;
-    height: 50px;
-    width: 50px;
+    height: 25px;
+    width: 25px;
     transform: rotate(0);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
@@ -4523,12 +4524,12 @@ ul {
 .brand-two .swiper-slide img {
     -webkit-transition: 500ms;
     transition: 500ms;
-    opacity: 0.3;
+    /* opacity: 0.3; */
     max-width: 100%;
 }
 
 .brand-two .swiper-slide img:hover {
-    opacity: 0.6;
+    /* opacity: 0.6; */
 }
 
 /*--------------------------------------------------------------

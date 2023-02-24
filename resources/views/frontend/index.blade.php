@@ -584,19 +584,14 @@
         </section>
         <!--Video One End-->
 
-        <!--Brand One Start-->
-        <section class="brand-one">
-            <div class="brand-one-shape" style="background-image: url(assets/images/shapes/brand-one-shape.png)"></div>
+        <!--Partner Start-->
+        <section class="brand-two">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-3">
-                        <div class="brand-one__title">
-                            <h2>Our partners</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-9">
-                        <div class="brand-one__main-content">
-                            <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Key Airline Partners</span>
+                    {{-- <h2 class="section-title__title">Most Popular Tours</h2> --}}
+                </div>
+                <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                         "0": {
                             "spaceBetween": 30,
                             "slidesPerView": 2
@@ -618,48 +613,30 @@
                             "slidesPerView": 5
                         },
                         "1199": {
-                            "spaceBetween": 50,
+                            "spaceBetween": 100,
                             "slidesPerView": 5
                         }
                     }}'>
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-1.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-2.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-3.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-4.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-5.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-1.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-2.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-3.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-4.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('frontend/assets/images/brand/brand-one-5.png')}}" alt="">
-                                    </div><!-- /.swiper-slide -->
-                                </div>
-                            </div>
-                        </div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontend/assets/images/partner/partner-1.png')}}" alt="">
+                        </div><!-- /.swiper-slide -->
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontend/assets/images/partner/partner-2.png')}}" alt="">
+                        </div><!-- /.swiper-slide -->
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontend/assets/images/partner/partner-3.png')}}" alt="">
+                        </div><!-- /.swiper-slide -->
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontend/assets/images/partner/partner-4.png')}}" alt="">
+                        </div><!-- /.swiper-slide -->
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontend/assets/images/partner/partner-5.png')}}" alt="">
+                        </div><!-- /.swiper-slide -->
                     </div>
                 </div>
             </div>
         </section>
-        <!--Brand One End-->
+        <!--Partner End-->
 
     @endsection
