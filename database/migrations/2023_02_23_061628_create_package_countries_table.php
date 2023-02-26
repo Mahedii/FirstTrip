@@ -19,6 +19,8 @@ return new class extends Migration
             $table->tinyInteger('STATUS')->default('0');
             $table->string('SLUG')->unique();
             $table->integer('SORT_ORDER')->nullable(true);
+            $table->string('FILE_NAME')->nullable(true);
+            $table->string('FILE_PATH')->nullable(true);
             $table->string('CREATOR')->nullable(true);
             $table->string('EDITOR')->nullable(true);
             $table->timestamps();

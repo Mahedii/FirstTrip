@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Common\RouteController;
 
 use App\Http\Controllers\Admin\Tour\TourPackageController;
+use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
 
 use App\Http\Controllers\Frontend\Tour\ToursController;
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -193,6 +194,32 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/delete/included-service/{id}', 'includedServiceDelete');
             Route::get('/delete/excluded-service/{id}', 'excludedServiceDelete');
             Route::get('/delete/tour-plan/{id}', 'tourPlanDelete');
+
+        });
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Destination Country Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(DestinationCountryController::class)->group(function() {
+
+        Route::prefix('destination-country')->group(function () {
+
+            Route::get('/show', 'index')->name('destination.country.lists');
+            Route::get('/load/store-page', 'loadDestinationCountryAddPage')->name('load.destination.country.storepage');
+            Route::post('/add', 'destinationCountryInsert')->name('destination.country.insert');
+            Route::get('/load/{slug}', 'loadDestinationCountryEditPage')->name('load.destination.country.editpage');
+            Route::post('/update/{slug}', 'destinationCountryUpdate')->name('destination.country.update');
+            Route::get('/delete/{slug}', 'destinationCountryDelete')->name('destination.country.delete');
 
         });
 

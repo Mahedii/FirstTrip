@@ -21,6 +21,7 @@ use App\Models\Tour\TourPackageInfo;
 use App\Models\Tour\TourPackageImage;
 use App\Models\Tour\TourPackageIncludedService;
 use App\Models\Tour\TourPackageExcludedService;
+use App\Models\Country\PackageCountry;
 use App\Models\Log\ActivityLog;
 
 class TourPackageController extends Controller{
@@ -97,7 +98,9 @@ class TourPackageController extends Controller{
             ->orderBy('tour_packages.id', 'DESC')
         	->get();
 
-        return view('admin.tours.add.index',compact('tourPackages'));
+        $packageCountries = PackageCountry::all();
+
+        return view('admin.tours.add.index',compact('tourPackages','packageCountries'));
     }
 
 
@@ -195,7 +198,7 @@ class TourPackageController extends Controller{
 
 
 
-        return redirect()->back()->with('crudMsg','Package '.$request->PACKAGE_NAME.' Added Successfully');
+        return redirect()->route('tour.package.lists')->with('crudMsg','Package '.$request->PACKAGE_NAME.' Added Successfully');
     }
 
 
@@ -211,7 +214,10 @@ class TourPackageController extends Controller{
 
     public function loadTourPackageEditPage($id,$slug){
 
-        $tourPackageData = TourPackage::select("*")->where('SLUG', $slug)->get();
+        $tourPackageData = TourPackage::select('tour_packages.*', 'package_countries.COUNTRY_NAME')
+        ->join('package_countries', 'package_countries.id', '=', 'tour_packages.COUNTRY_ID')
+        ->where('tour_packages.SLUG', '=', $slug)
+        ->get();
         $tourPackageInfoData = TourPackageInfo::select("*")->where('PACKAGE_ID', $id)->get();
         $tourPackageImageData = TourPackageImage::select("*")->where('PACKAGE_ID', $id)->get();
         $tourPackageIncludedServiceData = TourPackageIncludedService::select("*")->where('PACKAGE_ID', $id)->get();
@@ -221,7 +227,9 @@ class TourPackageController extends Controller{
             ->orderBy('tour_packages.id', 'DESC')
         	->get();
 
-        return view('admin.tours.edit.index',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData','tourPackages'));
+        $packageCountries = PackageCountry::all();
+
+        return view('admin.tours.edit.index',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData','tourPackages','packageCountries'));
 
     }
 
@@ -257,6 +265,7 @@ class TourPackageController extends Controller{
             'COST.required' => 'Tour package cost is required',
             'OVERVIEW.required' => 'Please give a overview of the package',
         ]);
+
 
         $tourPackage = TourPackage::where('SLUG', $SLUG)->first();
 
@@ -355,9 +364,7 @@ class TourPackageController extends Controller{
 
         File::deleteDirectory(public_path('frontend/assets/images/tour_packages/'.$slug));
 
-        $poDelete = TourPackage::where('SLUG', $slug)->delete();
-        // $poDelete = DB::table('purchase_orders')->where('SLUG', $slug)->delete();
-
+        TourPackage::where('SLUG', $slug)->delete();
 
         $color_array = ['card-dark', 'card-info', 'card-primary', 'card-secondary', 'card-success', 'card-warning', 'card-danger'];
         $random_color = Arr::random($color_array);

@@ -104,15 +104,12 @@
                                                     <div class="mb-3">
                                                         <label for="Country" class="form-label">Country<span class="text-danger">*</span></label>
                                                         <select class="js-example-basic-single" id="select-country" name="COUNTRY_ID">
-                                                            @php($def_val = 1)
-                                                            <option value="{{ $tourPackage->COUNTRY_ID }}" selected>{{ $tourPackage->COUNTRY_ID }}</option>
 
+                                                            <option value="{{ $tourPackage->COUNTRY_ID }}" selected>{{ $tourPackage->COUNTRY_NAME }}</option>
                                                             <option>Select Country</option>
-                                                            <option value="{{$def_val}}">India</option>
-                                                            <option value="{{$def_val}}">Thailand</option>
-                                                            <option value="{{$def_val}}">Bangladesh</option>
-                                                            <option value="{{$def_val}}">Malaysia</option>
-                                                            <option value="{{$def_val}}">Singapore</option>
+                                                            @foreach ($packageCountries as $countryData)
+                                                                <option @if(old('COUNTRY_ID') == $countryData->id) selected @endif value="{{ $countryData->id }}">{{ $countryData->COUNTRY_NAME }}</option>
+                                                            @endforeach
 
                                                         </select>
                                                         @if ($errors->has('COUNTRY_ID'))

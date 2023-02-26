@@ -75,6 +75,25 @@
                     </div>
                 </li> --}}
 
+                <li class="menu-title"><i class="ri-more-fill"></i> <span>Destinations</span></li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDestination" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarDestination">
+                        <i class="ri-file-list-3-line"></i> <span>Countries</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarDestination">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('destination.country.lists') }}" class="nav-link">View</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('load.destination.country.storepage') }}" class="nav-link">Add</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Tours</span></li>
 
                 {{-- <li class="nav-item">
@@ -84,11 +103,11 @@
                 </li> --}}
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarForms" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarForms">
+                    <a class="nav-link menu-link" href="#sidebarPackage" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarPackage">
                         <i class="ri-file-list-3-line"></i> <span>Packages</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarForms">
+                    <div class="collapse menu-dropdown" id="sidebarPackage">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('tour.package.lists') }}" class="nav-link">View</a>

@@ -14,6 +14,8 @@ class PackageCountry extends Model
         'STATUS',
         'SLUG',
         'SORT_ORDER',
+        'FILE_NAME',
+        'FILE_PATH',
         'CREATOR',
         'EDITOR',
     ];
