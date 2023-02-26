@@ -2,7 +2,7 @@
 <html data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
 
     <head>
-        
+
         <title>Sign In</title>
 
         @include('admin.include.title-meta')
@@ -27,7 +27,7 @@
                                             <div class="position-relative h-100 d-flex flex-column">
                                                 <div class="mb-4">
                                                     <a href="{{ Route('dashboard') }}" class="d-block">
-                                                        <img src="{!! asset('frontend/assets/img/logo/logo-white.png') !!}" alt="" >
+                                                        <img src="{!! asset('admin/assets/images/logo/logo-white.png') !!}" alt="" >
                                                     </a>
                                                 </div>
                                                 <div class="mt-auto">
@@ -67,7 +67,7 @@
                                         <div class="p-lg-5 p-4">
                                             <div>
                                                 <h5 class="text-primary">Welcome Back !</h5>
-                                                <p class="text-muted">Sign in to continue to Moon LTD ERP System.</p>
+                                                <p class="text-muted">Sign in to continue to FirstTrip System.</p>
                                             </div>
 
                                             @if(session('crudMsg'))
@@ -76,12 +76,12 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>
                                             @endif
-            
+
                                             <div class="mt-4">
                                                 <form method="POST" action="{{ route('user.signin') }}">
 
                                                     @csrf
-                    
+
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Email</label>
                                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}">
@@ -89,7 +89,7 @@
                                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                                         @endif
                                                     </div>
-                            
+
                                                     <div class="mb-3">
                                                         <!-- <div class="float-end">
                                                             <a href="auth-pass-reset-cover.php" class="text-muted">Forgot password?</a>
@@ -103,21 +103,21 @@
                                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                                         @endif
                                                     </div>
-                            
+
                                                     <!-- <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value="" name="remember" id="auth-remember-check">
                                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                                     </div> -->
-                                                    
+
                                                     <div class="mt-4">
                                                         <button class="btn btn-success w-100" type="submit">Sign In</button>
                                                     </div>
-                        
+
                                                     <div class="mt-4 text-center">
                                                         <!-- <div class="signin-other-title">
                                                             <h5 class="fs-13 mb-4 title">Sign In with</h5>
                                                         </div>
-        
+
                                                         <div>
                                                             <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
                                                             <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
@@ -125,22 +125,22 @@
                                                             <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
                                                         </div> -->
                                                     </div>
-                
+
                                                 </form>
                                             </div>
-    
+
 
                                         </div>
                                     </div>
                                     <!-- end col -->
-                                    
+
                                 </div>
                                 <!-- end row -->
                             </div>
                             <!-- end card -->
                         </div>
                         <!-- end col -->
-    
+
                     </div>
                     <!-- end row -->
                 </div>
@@ -154,7 +154,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> Moon LTD ERP. Made by <a target="_blank" href="https://www.moonitzone.com" style="color:white">Moon IT Zone</a></p>
+                                <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> FirstTrip. Made by <a target="_blank" href="https://www.mahadiislam.com" style="color:white">Mahadi</a></p>
                             </div>
                         </div>
                     </div>

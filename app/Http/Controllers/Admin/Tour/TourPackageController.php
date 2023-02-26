@@ -665,6 +665,38 @@ class TourPackageController extends Controller{
     }
 
 
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Insert Tour Package Status Update
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+    public function packageStatusUpdate($id){
+
+        $tourPackage = TourPackage::select("*")->where('id', $id)->first();
+        $STATUS = $tourPackage->STATUS;
+
+        if($STATUS == '1'){
+            $NEW_STATUS = '0';
+        }
+        else{
+            $NEW_STATUS = '1';
+        }
+
+        TourPackage::where('id', $id)->update([
+            'STATUS' => $NEW_STATUS,
+            'EDITOR' => Auth::user()->id,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return response()->json(['status'=>$NEW_STATUS]);
+
+    }
+
+
 
     /*
     |--------------------------------------------------------------------------

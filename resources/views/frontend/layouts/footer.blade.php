@@ -49,7 +49,7 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p>3rdfloor, Sharif Plaza, 39 Kamal Ataturk Avenue, Banani, Dhaka-1213.</p>
+                                        <p>3rd floor, Sharif Plaza, 39 Kamal Ataturk Avenue, Banani, Dhaka-1213.</p>
                                     </div>
                                 </li>
                             </ul>

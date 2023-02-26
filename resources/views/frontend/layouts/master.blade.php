@@ -62,7 +62,6 @@
                     <div class="mobile-nav__social">
                         <a href="#" class="fab fa-twitter"></a>
                         <a href="#" class="fab fa-facebook-square"></a>
-                        <a href="#" class="fab fa-pinterest-p"></a>
                         <a href="#" class="fab fa-instagram"></a>
                     </div><!-- /.mobile-nav__social -->
                 </div><!-- /.mobile-nav__top -->
@@ -74,9 +73,9 @@
         </div>
         <!-- /.mobile-nav__wrapper -->
 
-        <div class="search-popup">
+        {{-- <div class="search-popup">
             <div class="search-popup__overlay search-toggler"></div>
-            <!-- /.search-popup__overlay -->
+
             <div class="search-popup__content">
                 <form action="#">
                     <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
@@ -86,8 +85,8 @@
                     </button>
                 </form>
             </div>
-            <!-- /.search-popup__content -->
-        </div>
+
+        </div> --}}
         <!-- /.search-popup -->
 
 

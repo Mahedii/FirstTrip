@@ -185,6 +185,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('/update/{slug}', 'tourPackageUpdate')->name('tour.package.update');
             Route::get('/delete/{slug}', 'tourPackageDelete')->name('tour.package.delete');
             Route::get('/delete/image/{id}', 'tourPackageImageDelete');
+            Route::get('/status/update/{id}', 'packageStatusUpdate');
 
             Route::post('/details/add', 'packageDetailsInsert')->name('tour.package.details.insert');
 

@@ -119,6 +119,23 @@
                     </div>
                 </li>
 
+
+                <li class="menu-title"><i class="ri-more-fill"></i> <span>Booking Information</span></li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarBooking" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarBooking">
+                        <i class="ri-file-list-3-line"></i> <span>Bookings</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarBooking">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('destination.country.lists') }}" class="nav-link">View</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

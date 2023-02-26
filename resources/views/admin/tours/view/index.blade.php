@@ -57,6 +57,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Package Name</th>
+                                            <th>Status</th>
                                             <th>Flight Type</th>
                                             <th>Duration</th>
                                             <th>Destination</th>
@@ -70,9 +71,18 @@
 
                                         @foreach($tourPackages as $key => $tourPackage)
 
-                                            <tr>
+                                            <tr data-id="{{ $tourPackage->id }}" class="package-{{ $tourPackage->id }}">
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $tourPackage->PACKAGE_NAME }}</td>
+                                                <td>
+                                                    @if($tourPackage->STATUS == 0)
+                                                        <button class="btn btn-soft-secondary w-sm publishedBtn" style="display: none">Published</button>
+                                                        <button class="btn btn-soft-danger w-sm unpublishedBtn">Unpublished</button>
+                                                    @else
+                                                        <button class="btn btn-soft-secondary w-sm publishedBtn">Published</button>
+                                                        <button class="btn btn-soft-danger w-sm unpublishedBtn" style="display: none">Unpublished</button>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $tourPackage->TOUR_TYPE }}</td>
                                                 <td>{{ $tourPackage->DURATION }}</td>
                                                 <td>{{ $tourPackage->DESTINATION }}</td>
@@ -127,6 +137,8 @@
             <!-- container-fluid -->
         </div>
         <!-- End Page-content -->
+
+        @include('admin.tours.ajax.package-status')
 
 
     @endsection
