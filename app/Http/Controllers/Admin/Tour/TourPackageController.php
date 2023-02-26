@@ -118,6 +118,7 @@ class TourPackageController extends Controller{
             'PACKAGE_NAME' => 'required',
             'DURATION'=>'required',
             'TOUR_TYPE' => 'required',
+            'COUNTRY_ID'=>'required',
             'DESTINATION'=>'required',
             'COST' => 'required',
             'OVERVIEW' => 'required',
@@ -127,10 +128,13 @@ class TourPackageController extends Controller{
             'PACKAGE_NAME.required' => 'Please give a package name',
             'DURATION.required' => 'Please give a duration for the package',
             'TOUR_TYPE.required' => 'flight type is required',
+            'COUNTRY_ID.required' => 'Please select a country',
             'DESTINATION.required' => 'Please give a destination name',
             'COST.required' => 'Tour package cost is required',
             'OVERVIEW.required' => 'Please give a overview of the package',
         ]);
+
+
 
         $SLUG = $this->generateSlug($request->PACKAGE_NAME);
 
@@ -160,11 +164,15 @@ class TourPackageController extends Controller{
             $filePath = "";
         }
 
-        $po = TourPackage::create([
+        // dd($request->COUNTRY_ID);
+
+        TourPackage::create([
             'PACKAGE_NAME' => $request->PACKAGE_NAME,
             'DURATION' => $request->DURATION,
             'TOUR_TYPE' => $request->TOUR_TYPE,
+
             'DESTINATION' => $request->DESTINATION,
+            'COUNTRY_ID' => $request->COUNTRY_ID,
             'COST' => $request->COST,
             'OVERVIEW' => $request->OVERVIEW,
             'FILE_NAME' => $fileName,
@@ -201,30 +209,19 @@ class TourPackageController extends Controller{
     |--------------------------------------------------------------------------
     */
 
-    public function loadTourPackageEditPage($slug){
+    public function loadTourPackageEditPage($id,$slug){
 
-        $purchaseOrderData = PurchaseOrder::select('purchase_orders.*', 'customers.CUSTOMER_NAME')
-        ->join('customers', 'customers.CUSTOMER_ID', '=', 'purchase_orders.CUSTOMER_ID')
-        ->where('purchase_orders.SLUG', '=', $slug)
-        ->orderBy('purchase_orders.PURCHASE_ORDER_ID', 'DESC')
-        ->get();
-        $customers = Customer::orderBy('CUSTOMER_ID', 'DESC')->get();
+        $tourPackageData = TourPackage::select("*")->where('SLUG', $slug)->get();
+        $tourPackageInfoData = TourPackageInfo::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageImageData = TourPackageImage::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageIncludedServiceData = TourPackageIncludedService::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageExcludedServiceData = TourPackageExcludedService::select("*")->where('PACKAGE_ID', $id)->get();
 
-        $purchaseOrderAllData = PurchaseOrder::all();
-        $po = PurchaseOrder::select("*")->where('SLUG', $slug)->first();
-        $PO_NO = $po->PO_NO;
+        $tourPackages = TourPackage::select('tour_packages.id', 'tour_packages.PACKAGE_NAME')
+            ->orderBy('tour_packages.id', 'DESC')
+        	->get();
 
-        $purchaseOrderList = PurchaseOrderList::select('purchase_order_lists.*')
-        ->where('PO_NO', '=', $PO_NO)
-        ->orderBy('PURCHASE_ORDER_LIST_ID', 'ASC')
-        ->get();
-
-        // dd($pol);
-
-        //  //  Query Builder Find Method
-        // $purchaseOrderData = DB::table('purchase_orders')->where('SLUG',$slug)->first();
-
-        return view('admin.po.edit-po',compact('purchaseOrderData','customers','purchaseOrderAllData','purchaseOrderList'));
+        return view('admin.tours.edit.index',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData','tourPackages'));
 
     }
 
@@ -242,75 +239,86 @@ class TourPackageController extends Controller{
     public function tourPackageUpdate(Request $request,$SLUG){
 
         $validated = $request->validate([
-            'CUSTOMER_ID' => 'required',
-            'PO_DATE' => 'required',
-            'REF_NO'=>'required',
-            'INVOICE_ADDRESS' => 'required',
-            'DELIVERY_ADDRESS' => 'required',
-            'VAT'=>'required',
-            'AIT'=>'required',
-            'NOTE'=>'required',
-            'inputFile' => 'mimes:csv,zip,xlx,xls,pdf|max:5120',
+            'PACKAGE_NAME' => 'required',
+            'DURATION'=>'required',
+            'TOUR_TYPE' => 'required',
+            'COUNTRY_ID'=>'required',
+            'DESTINATION'=>'required',
+            'COST' => 'required',
+            'OVERVIEW' => 'required',
+            'singleFile' => 'mimes:jpg,png,jpeg,gif,svg|max:5120',
         ],
         [
-            'CUSTOMER_ID.required' => 'Please Select Customer Name',
+            'PACKAGE_NAME.required' => 'Please give a package name',
+            'DURATION.required' => 'Please give a duration for the package',
+            'TOUR_TYPE.required' => 'flight type is required',
+            'COUNTRY_ID.required' => 'Please select a country',
+            'DESTINATION.required' => 'Please give a destination name',
+            'COST.required' => 'Tour package cost is required',
+            'OVERVIEW.required' => 'Please give a overview of the package',
         ]);
 
+        $tourPackage = TourPackage::where('SLUG', $SLUG)->first();
 
-        $po = PurchaseOrder::where('SLUG', $SLUG)->first();
-        $PO_NO = $po->PO_NO;
-        $FILE_PATH = $po->FILE_PATH;
-        $filePath = $po->FILE_PATH;
-        $fileName = $po->FILE_NAME;
+        $PACKAGE_ID = $tourPackage->id;
+        $thumnailFilePath = $tourPackage->FILE_PATH;
+        $thumnailFileName = $tourPackage->FILE_NAME;
 
-        $fileInput = $request->file('inputFile');
+        $fileInput = $request->file('singleFile');
 
         if ($fileInput) {
 
-            $fileName = $fileInput->getClientOriginalName();
+            $fileExtension = strtolower($fileInput->getClientOriginalExtension());
+            $thumnailFileName = 'thumbnail.'.$fileExtension;
 
-            //$fileExtension = $fileInput->extension();
-            //$fileExtension = strtolower($fileInput->getClientOriginalExtension());
-
-            $path = public_path('frontend/assets/files/'.$SLUG.'/');
+            $path = public_path('frontend/assets/images/tour_packages/'.$SLUG.'/');
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
-
-            $request->inputFile->move($path, $fileName);
-
-            $filePath = 'frontend/assets/files/'.$SLUG.'/'.$fileName;
-
-
-            if( File::exists(public_path($FILE_PATH)) ) {
-                File::delete(public_path($FILE_PATH));
-            }
-
-
+            $request->singleFile->move($path, $thumnailFileName);
+            $thumnailFilePath = 'frontend/assets/images/tour_packages/'.$SLUG.'/'.$thumnailFileName;
 
         }
 
+        $multiImageInput = $request->file('multipleImageFile');
 
-        $update = PurchaseOrder::where('SLUG', $SLUG)->update([
-            'CUSTOMER_ID' => $request->CUSTOMER_ID,
-            'PO_DATE' => $request->PO_DATE,
-            'REF_NO' => $request->REF_NO,
-            'INVOICE_ADDRESS' => $request->INVOICE_ADDRESS,
-            'DELIVERY_ADDRESS' => $request->DELIVERY_ADDRESS,
-            'VAT' => $request->VAT,
-            'AIT' => $request->AIT,
-            'NOTE' => $request->NOTE,
-            'FILE_NAME' => $fileName,
-            'FILE_PATH' => $filePath,
+        if ($request->hasfile('multipleImageFile')) {
+            foreach ($request->multipleImageFile as $multi_image) {
+                $fileName = $multi_image->getClientOriginalName();
+                $path = public_path('frontend/assets/images/tour_packages/'.$SLUG.'/');
+                if (!File::isDirectory($path)) {
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                if ($multi_image->move($path, $fileName)) {
+                    $filePath = 'frontend/assets/images/tour_packages/'.$SLUG.'/'.$fileName;
+                    TourPackageImage::create([
+                        'PACKAGE_ID' => $PACKAGE_ID,
+                        'FILE_NAME' => $fileName,
+                        'FILE_PATH' => $filePath,
+                        'CREATOR' => Auth::user()->id
+                    ]);
+                }
+            }
+        }
+
+        TourPackage::where('SLUG', $SLUG)->update([
+            'PACKAGE_NAME' => $request->PACKAGE_NAME,
+            'DURATION' => $request->DURATION,
+            'TOUR_TYPE' => $request->TOUR_TYPE,
+            'COUNTRY_ID' => $request->COUNTRY_ID,
+            'DESTINATION' => $request->DESTINATION,
+            'COST' => $request->COST,
+            'OVERVIEW' => $request->OVERVIEW,
+            'FILE_NAME' => $thumnailFileName,
+            'FILE_PATH' => $thumnailFilePath,
             'EDITOR' => Auth::user()->id,
             'updated_at' => Carbon::now()
         ]);
 
-
         $color_array = ['card-dark', 'card-info', 'card-primary', 'card-secondary', 'card-success', 'card-warning', 'card-danger'];
         $random_color = Arr::random($color_array);
-        $ACTION = "Updated PO ".$PO_NO.".";
+        $ACTION = "Updated TOur Package ".$request->PACKAGE_NAME.".";
 
         $log = ActivityLog::create([
             'USER_ID' => Auth::user()->id,
@@ -319,8 +327,7 @@ class TourPackageController extends Controller{
             'CARD_COLOR' => $random_color
         ]);
 
-        return redirect()->route('po.lists')->with('crudMsg','PO '.$request->SLUG.' Updated Successfully');
-        // return response()->json(['success' => 'PO Updated Successfully.']);
+        return redirect()->route('tour.package.lists')->with('crudMsg','Tour Package '.$request->PACKAGE_NAME.' Updated Successfully');
 
     }
 
@@ -450,7 +457,7 @@ class TourPackageController extends Controller{
                         ]);
                     }
                 }
-             }
+            }
 
             // if ($multiImageInput){
 
@@ -489,8 +496,8 @@ class TourPackageController extends Controller{
                 'CARD_COLOR' => $random_color
             ]);
 
-            return redirect()->back()->with('crudMsg','Package '.$tourPackage->PACKAGE_NAME.' details is successfully added');
-            // return response()->json(['success'=>'Package '.$tourPackage->PACKAGE_NAME.' details is successfully added']);
+            // return redirect()->back()->with('crudMsg','Package '.$tourPackage->PACKAGE_NAME.' details is successfully added');
+            return response()->json(['success'=>'Package '.$tourPackage->PACKAGE_NAME.' details is successfully added']);
 
         }
         else{
@@ -498,6 +505,156 @@ class TourPackageController extends Controller{
             return response()->json(['errors'=>$validated->errors()->all()]);
         }
 
+    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Delete Tour Package Image
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function tourPackageImageDelete($id){
+
+        $imageData = TourPackageImage::where('id', $id)->first();
+        $FILE_PATH = $imageData->FILE_PATH;
+
+        if( File::exists(public_path($FILE_PATH)) ) {
+            File::delete(public_path($FILE_PATH));
+        }
+
+        TourPackageImage::where('id', $id)->delete();
+
+        return response()->json("Success");
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Update Tour Package included service data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function incServiceUpdate(Request $request){
+
+        TourPackageIncludedService::where('id', $request->id)->update([
+            'INCLUDED_SERVICE' => $request->INCLUDED_SERVICE,
+            'EDITOR' => Auth::user()->id,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->back()->with('crudMsg','Included service '.$request->INCLUDED_SERVICE.' Updated Successfully');
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Update Tour Package excluded service data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function excServiceUpdate(Request $request){
+
+        TourPackageExcludedService::where('id', $request->id)->update([
+            'EXCLUDED_SERVICE' => $request->EXCLUDED_SERVICE,
+            'EDITOR' => Auth::user()->id,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->back()->with('crudMsg','Excluded service '.$request->EXCLUDED_SERVICE.' Updated Successfully');
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Update Tour Package planning data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function tourPackagePlanUpdate(Request $request){
+
+        TourPackageInfo::where('id', $request->id)->update([
+            'TOUR_PLAN_TITLE_TEXT' => $request->TOUR_PLAN_TITLE_TEXT,
+            'TOUR_PLAN_TITLE_BODY' => $request->TOUR_PLAN_TITLE_BODY,
+            'EDITOR' => Auth::user()->id,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->back()->with('crudMsg','Tour Plan '.$request->TOUR_PLAN_TITLE_TEXT.' Updated Successfully');
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Delete Tour Package included service data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function includedServiceDelete($id){
+
+        TourPackageIncludedService::where('id', $id)->delete();
+
+        return response()->json("Success");
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Delete Tour Package excluded service data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function excludedServiceDelete($id){
+
+        TourPackageExcludedService::where('id', $id)->delete();
+
+        return response()->json("Success");
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Delete Tour Package plan data
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    public function tourPlanDelete($id){
+
+        TourPackageInfo::where('id', $id)->delete();
+
+        return response()->json("Success");
     }
 
 

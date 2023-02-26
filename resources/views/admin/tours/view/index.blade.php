@@ -73,7 +73,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $tourPackage->PACKAGE_NAME }}</td>
-                                                <td>{{ $tourPackage->FLIGHT_TYPE }}</td>
+                                                <td>{{ $tourPackage->TOUR_TYPE }}</td>
                                                 <td>{{ $tourPackage->DURATION }}</td>
                                                 <td>{{ $tourPackage->DESTINATION }}</td>
                                                 <td>{{ $tourPackage->COST }}</td>
@@ -94,7 +94,7 @@
                                                             </li>
 
                                                             <li>
-                                                                <a href="{{ route('load.tourPackage.editpage',$tourPackage->SLUG) }}" class="dropdown-item edit-item-btn">
+                                                                <a href="{{ route('load.tourPackage.editpage',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}" class="dropdown-item edit-item-btn">
                                                                     <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                     Edit
                                                                 </a>

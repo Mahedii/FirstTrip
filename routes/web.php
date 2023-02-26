@@ -8,6 +8,8 @@ use App\Http\Controllers\Common\RouteController;
 
 use App\Http\Controllers\Admin\Tour\TourPackageController;
 
+use App\Http\Controllers\Frontend\Tour\ToursController;
+
 
 
 
@@ -50,21 +52,32 @@ Route::get('/destination-detail', function () {
     return view('frontend.destination.destination-detail');
 })->name("destination.detail");
 
-Route::get('/tours', function () {
-    return view('frontend.tours.tours');
-})->name("tours");
-
-Route::get('/tours-list', function () {
-    return view('frontend.tours.tours-list');
-})->name("tours.list");
 
 Route::get('/tour-details', function () {
     return view('frontend.tours.tour-detail');
 })->name("tour.details");
 
-Route::get('/tour-package/add', function () {
-    return view('admin.tours.add.index');
-})->name("tour.package.add");
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Tour Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(ToursController::class)->group(function() {
+
+        Route::prefix('tours')->group(function () {
+
+            Route::get('/all', 'index')->name('tours');
+            
+
+        });
+
+    });
 
 
 /*
@@ -172,11 +185,19 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/detail/{slug}', 'tourPackageDetailPageLoad')->name('tourPackage.detail.view');
             Route::get('/load/store-page', 'loadTourPackageAddPage')->name('load.tourPackage.storepage');
             Route::post('/add', 'tourPackageInsert')->name('tour.package.insert');
-            Route::get('/load/{slug}', 'loadTourPackageEditPage')->name('load.tourPackage.editpage');
+            Route::get('/load/{id}/{slug}', 'loadTourPackageEditPage')->name('load.tourPackage.editpage');
             Route::post('/update/{slug}', 'tourPackageUpdate')->name('tour.package.update');
             Route::get('/delete/{slug}', 'tourPackageDelete')->name('tour.package.delete');
+            Route::get('/delete/image/{id}', 'tourPackageImageDelete');
 
             Route::post('/details/add', 'packageDetailsInsert')->name('tour.package.details.insert');
+
+            Route::post('/included-service/update', 'incServiceUpdate')->name('incServiceUpdate');
+            Route::post('/excluded-service/update', 'excServiceUpdate')->name('excServiceUpdate');
+            Route::post('/tour-plan/update', 'tourPackagePlanUpdate')->name('tourPackagePlanUpdate');
+            Route::get('/delete/included-service/{id}', 'includedServiceDelete');
+            Route::get('/delete/excluded-service/{id}', 'excludedServiceDelete');
+            Route::get('/delete/tour-plan/{id}', 'tourPlanDelete');
 
         });
 

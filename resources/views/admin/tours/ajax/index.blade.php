@@ -2,6 +2,9 @@
 
     $(document).ready(function () {
 
+        $('#tourPackageForm')[0].reset();
+        $('#packageDetailsForm')[0].reset();
+
         var inc_counter=0;
         $('#add-included-item').click(function(){
             inc_counter++;
@@ -106,73 +109,177 @@
         });
 
 
+        // $(document).on('click', '.edit-included-item', function(e){
+
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+
+        //     e.preventDefault();
+
+        //     var id = $(this).data('id');
+        //     var isv = $("#INCLUDED_SERVICE-"+id).val();
+
+        //     var dataString = $('#incServiceForm-'id).serialize();
+
+        //     $.ajax({
+        //         type:'POST',
+        //         url:"{{ route('incServiceUpdate') }}",
+        //         dataType: 'json',
+        //         data:dataString,
+        //         success:function(data){
+        //             swal.fire({
+        //                 title:"Success!",
+        //                 html:"Included service "+isv+" updated successfully.",
+        //                 icon:"success",
+        //                 button:"Aww yiss!"
+        //             });
+
+        //         },
+        //         error: function (xhr, ajaxOptions, thrownError) {
+        //             alert(xhr.status);
+        //             alert(thrownError);
+        //         }
+        //     });
+
+        // });
+
+
+
+        // $(document).on('click', '.edit-excluded-item', function(){
+
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+
+        //     var id = $(this).data('id');
+        //     var esv = $("#EXCLUDED_SERVICE-"+id).val();
+        //     // alert(esv);
+        //     var url = '/tour-package/details/exc_service/update';
+
+        //     $.ajax({
+        //         type:'GET',
+        //         url:url,
+        //         data:{id : id,EXCLUDED_SERVICE: esv},
+        //         success:function(data){
+        //             swal.fire({
+        //                 title:"Success!",
+        //                 html:"Excluded service "+esv+" updated successfully.",
+        //                 icon:"success",
+        //                 button:"Aww yiss!"
+        //             });
+
+        //         },
+        //         error: function (xhr, ajaxOptions, thrownError) {
+        //             alert(xhr.status);
+        //             alert(thrownError);
+        //         }
+        //     });
+
+        // });
+
+
+        $(document).on("click", ".delete-excluded-item", function(){
+
+            var id = $(this).data('id');
+            var url = '/tour-package/delete/excluded-service/'+id;
+            alert(url);
+            $.ajax({
+                type:'get',
+                url:url,
+                success:function(data){
+                    $(".excServiceForm-"+id).remove();
+                    swal.fire({
+                        title:"Success!",
+                        html:"Delected excluded service successfully deleted",
+                        icon:"success",
+                        button:"Aww yiss!"
+                    });
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+
+        });
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        $("#packageDetailsForm").validate({
-            rules: {
-                'multipleImageFile[]': {
-                    required: true,
-                }
-            },
-            messages: {
-                'multipleImageFile[]': {
-                    required: "Please upload the image(s)",
-                }
-            },
-            submitHandler: function(form, event) {
-                event.preventDefault();
-                let formData = new FormData(form);
 
-                const totalImages = $("#multipleImageFile")[0].files.length;
-                let images = $("#multipleImageFile")[0];
+        $("body").on("submit", "#packageDetailsForm", function(e){
 
-                for (let i = 0; i < totalImages; i++) {
-                    formData.append('multipleImageFile' + i, images.files[i]);
-                }
-                formData.append('totalImages', totalImages);
+            e.preventDefault();
 
-                // console.log(formData);
+            var form = $('#packageDetailsForm')[0];
+            let formData = new FormData(form);
 
-                $.ajax({
-                    url: "{{ route('tour.package.details.insert') }}",
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    cache: false,
-                    contentType: false,
-                    success: function(data) {
-                        form.reset();
-                        var err_msg = "";
+            const totalImages = $("#multipleImageFile")[0].files.length;
+            let images = $("#multipleImageFile")[0];
 
-                        jQuery.each(data.errors, function(key, value){
-                            // jQuery('.alert-danger').show();
-                            // jQuery('.alert-danger').append('<p>'+value+'</p>');
-                            err_msg = err_msg+'<p style="color:red;"><b>'+value+'</b></p>';
+            for (let i = 0; i < totalImages; i++) {
+                formData.append('multipleImageFile' + i, images.files[i]);
+            }
+            formData.append('totalImages', totalImages);
+
+            // console.log(formData);
+
+            $.ajax({
+                url: "{{ route('tour.package.details.insert') }}",
+                type: 'POST',
+                data: formData,
+                processData: false,
+                cache: false,
+                contentType: false,
+                success: function(data) {
+
+                    var err_msg = "";
+                    jQuery.each(data.errors, function(key, value){
+                        // jQuery('.alert-danger').show();
+                        // jQuery('.alert-danger').append('<p>'+value+'</p>');
+                        err_msg = err_msg+'<p style="color:red;"><b>'+value+'</b></p>';
+                    });
+
+                    if(err_msg !=""){
+                        swal.fire({
+                            title:"Error!",
+                            html:err_msg,
+                            icon:"error",
+                            button:"Aww yiss!"
+                        });
+                    }else{
+                        swal.fire({
+                            title:"Success!",
+                            html:data.success,
+                            icon:"success",
+                            button:"Aww yiss!"
                         });
 
-                        if(err_msg !=""){
-                            swal.fire({
-                                title:"Error!",
-                                html:err_msg,
-                                icon:"error",
-                                button:"Aww yiss!"
-                            });
-                        }else{
-                            swal.fire({
-                                title:"Success!",
-                                html:data.success,
-                                icon:"success",
-                                button:"Aww yiss!"
-                            });
-                            $("#packageDetailsForm")[0].reset();
-                        }
+                        $('#packageDetailsForm')[0].reset();
+                        $('div.images-preview-div').empty();
+
+                        // $('#packageDetailsForm').trigger("reset");
+                        // $("#packageDetailsForm").find('input:text, input:password, input:file, select, textarea').val(null);
+                        // $("#packageDetailsForm").find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+
                     }
-                });
-            }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+
         });
 
 
@@ -247,7 +354,7 @@
                 for (i = 0; i < filesAmount; i++) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
-                        var content = $($.parseHTML('<img>')).attr({src:event.target.result,width:"150px",height:"150px",class:"m-2"});
+                        var content = $($.parseHTML('<img>')).attr({src:event.target.result,width:"200px",height:"150px",class:"m-2"});
                         $(imgPreviewPlaceholder).html(content);
                     }
                     reader.readAsDataURL(input.files[i]);
@@ -268,7 +375,7 @@
                     var reader = new FileReader();
                     reader.onload = function(event) {
 
-                        $($.parseHTML('<img>')).attr({src:event.target.result,width:"150px",height:"150px",class:"m-2"}).appendTo(imgPreviewPlaceholder);
+                        $($.parseHTML('<img>')).attr({src:event.target.result,width:"190px",height:"150px",class:"m-2"}).appendTo(imgPreviewPlaceholder);
                     }
                     reader.readAsDataURL(input.files[i]);
                 }
@@ -277,25 +384,41 @@
 
         $('#multipleImageFile').on('change', function() {
             previewMultipleImages(this, 'div.images-preview-div');
+            $(".multipleImageResetBtn").show();
         });
 
+        $(".multipleImageResetBtn").on('click', function() {
+            $('#multipleImageFile').val(null);
+            $('div.images-preview-div').empty();
+            $(".multipleImageResetBtn").hide();
+        });
 
-        $('.product-image-delete-btn').on('click', function(e) {
+        $(document).on("click", ".package-image-delete-btn", function(){
 
-            e.preventDefault();
-
-            var productImageID = $(this).data('id');
-            var userURL = '/product/delete/image/'+productImageID;
+            var id = $(this).data('id');
+            var url = '/tour-package/delete/image/'+id;
 
             $.ajax({
                 type:'get',
-                url:userURL,
+                url:url,
                 success:function(data){
-                    $(".product-image-"+productImageID).remove();
+                    $(".package-image-"+id).remove();
+                    swal.fire({
+                        title:"Success!",
+                        html:"Image successfully deleted",
+                        icon:"success",
+                        button:"Aww yiss!"
+                    });
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
                 }
             });
 
         });
+
 
     });
 

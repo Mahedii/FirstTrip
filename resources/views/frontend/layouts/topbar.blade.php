@@ -22,12 +22,7 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#">Tours</a>
-                                    <ul>
-                                        <li><a href="{{ route('tours') }}">Tours</a></li>
-                                        <li><a href="{{ route('tours.list') }}">Tours List</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Tours Details</a></li>
-                                    </ul>
+                                    <a href="{{ route('tours') }}">Tours</a>
                                 </li>
                             </ul>
                         </div>

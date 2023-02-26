@@ -48,7 +48,7 @@
 
 
 
-                    <form method="POST" action="{{ route('tour.package.insert') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('tour.package.insert') }}" enctype="multipart/form-data" id="tourPackageForm">
 
                         @csrf
 
@@ -102,19 +102,29 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="DESTINATION" class="form-label">Destination<span class="text-danger">*</span></label>
-                                                    <select class="js-example-basic-single" id="select-destination" name="DESTINATION">
-
-                                                        <option>Select Destination</option>
-                                                        <option value="Dubai-UAE">Dubai-UAE</option>
-                                                        <option value="Bangkok">Bangkok</option>
-                                                        <option value="Malaysia">Malaysia</option>
-                                                        <option value="Kolkata">Kolkata</option>
-                                                        <option value="Singapore">Singapore</option>
-                                                        <option value="Sylhet">Sylhet</option>
-                                                        <option value="Cox's Bazar">Cox's Bazar</option>
+                                                    <label for="Country" class="form-label">Country<span class="text-danger">*</span></label>
+                                                    <select class="js-example-basic-single" id="select-country" name="COUNTRY_ID">
+                                                        @php($def_val = 1)
+                                                        <option>Select Country</option>
+                                                        <option value="{{$def_val}}">India</option>
+                                                        <option value="{{$def_val}}">Thailand</option>
+                                                        <option value="{{$def_val}}">Bangladesh</option>
+                                                        <option value="{{$def_val}}">Malaysia</option>
+                                                        <option value="{{$def_val}}">Singapore</option>
 
                                                     </select>
+                                                    @if ($errors->has('COUNTRY_ID'))
+                                                        <span class="text-danger">{{ $errors->first('COUNTRY_ID') }}</span>
+                                                    @endif
+                                                </div>
+
+                                            </div><!--end col-->
+
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="DESTINATION" class="form-label">Destination<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control @error('DESTINATION') is-invalid @enderror" value="{{ old('DESTINATION') }}" name="DESTINATION">
                                                     @if ($errors->has('DESTINATION'))
                                                         <span class="text-danger">{{ $errors->first('DESTINATION') }}</span>
                                                     @endif
@@ -145,7 +155,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="Thumbnail_Image" class="form-label">Thumbnail Image</label>
+                                                    <label for="Thumbnail_Image" class="form-label">Thumbnail Image (370*259)</label>
                                                     <p class="text-muted">Add tour package thumbnail image.</p>
                                                     <input type="file" class="form-control" id="singleImageFile" name="singleFile" >
                                                 </div>
@@ -222,14 +232,16 @@
 
 
 
-                                            <div class="col-md-6 col-sm-12">
-                                                <div>
-                                                    <label for="" class="form-label">Slider Image</label>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Slider Image (1894*580)</label>
                                                     <p class="text-muted">Add tour package details slider images.</p>
                                                     <input type="file" class="form-control" id="multipleImageFile" name="multipleImageFile[]" multiple="multiple">
                                                 </div>
                                                 <div class="images-preview-div"> </div>
+                                                <button type="button" class="btn btn-danger multipleImageResetBtn w-sm" style="display: none;">Reset</button>
                                             </div><!--end col-->
+
 
                                         </div>
 
@@ -346,7 +358,12 @@
         </div>
         <!-- End Page-content -->
 
-        @include('admin.tours.ajax.index');
+        @include('admin.tours.ajax.single-image')
+        @include('admin.tours.ajax.multiple-image')
+        @include('admin.tours.ajax.package-detail')
+        @include('admin.tours.ajax.included-service')
+        @include('admin.tours.ajax.excluded-service')
+        @include('admin.tours.ajax.tour-plan')
 
 
     @endsection
