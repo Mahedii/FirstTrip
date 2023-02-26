@@ -246,282 +246,30 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="popular-tours__carousel owl-theme owl-carousel">
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
+                            @foreach($tourPackages as $key => $tourPackage)
+                                <div class="popular-tours__single">
+                                    <div class="popular-tours__img">
+                                        <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
+                                        <div class="popular-tours__icon">
+                                            <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="popular-tours__content">
+                                        {{-- <div class="popular-tours__stars">
+                                            <i class="fa fa-star"></i> 8.0 Superb
+                                        </div> --}}
+                                        <h3 class="popular-tours__title"><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->PACKAGE_NAME}}</a></h3>
+                                        <p class="popular-tours__rate"><span>{{$tourPackage->COST}}</span> / Per Person</p>
+                                        <ul class="popular-tours__meta list-unstyled">
+                                            <li><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->DURATION}}</a></li>
+                                            {{-- <li><a href="{{ route('tour.details') }}">{{$tourPackage->TOUR_TYPE}}</a></li> --}}
+                                            <li><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->DESTINATION}}</a></li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">The Dark Forest
-                                            Adventure</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Discover Depth of
-                                            Beach</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Moscow Red City
-                                            Land</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Magic of Italy
-                                            Tours</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">Discover Depth of
-                                            Beach</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-1.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-2.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-3.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="popular-tours__single">
-                                <div class="popular-tours__img">
-                                    <img src="{{asset('frontend/assets/images/resources/popular-tours__img-4.jpg')}}" alt="">
-                                    <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="popular-tours__content">
-                                    <div class="popular-tours__stars">
-                                        <i class="fa fa-star"></i> 8.0 Superb
-                                    </div>
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">National Park 2 Days
-                                            Tour</a></h3>
-                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                    <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">3 Days</a></li>
-                                        <li><a href="{{ route('tour.details') }}">12+</a></li>
-                                        <li><a href="{{ route('tour.details') }}">Los Angeles</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Common\RouteController;
 use App\Http\Controllers\Admin\Tour\TourPackageController;
 
 use App\Http\Controllers\Frontend\Tour\ToursController;
+use App\Http\Controllers\Frontend\Home\HomeController;
 
 
 
@@ -40,9 +41,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-})->name("home");
 
 Route::get('/destination', function () {
     return view('frontend.destination.destination');
@@ -51,6 +49,8 @@ Route::get('/destination', function () {
 Route::get('/destination-detail', function () {
     return view('frontend.destination.destination-detail');
 })->name("destination.detail");
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
     /*
