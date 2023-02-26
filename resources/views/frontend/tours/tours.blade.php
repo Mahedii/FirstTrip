@@ -40,7 +40,7 @@
                                 <div class="popular-tours__img">
                                     <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
                                     <div class="popular-tours__icon">
-                                        <a href="{{ route('tour.details') }}">
+                                        <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
                                     </div>
@@ -49,12 +49,12 @@
                                     {{-- <div class="popular-tours__stars">
                                         <i class="fa fa-star"></i> 8.0 Superb
                                     </div> --}}
-                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details') }}">{{$tourPackage->PACKAGE_NAME}}</a></h3>
+                                    <h3 class="popular-tours__title"><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->PACKAGE_NAME}}</a></h3>
                                     <p class="popular-tours__rate"><span>{{$tourPackage->COST}}</span> / Per Person</p>
                                     <ul class="popular-tours__meta list-unstyled">
-                                        <li><a href="{{ route('tour.details') }}">{{$tourPackage->DURATION}}</a></li>
+                                        <li><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->DURATION}}</a></li>
                                         {{-- <li><a href="{{ route('tour.details') }}">{{$tourPackage->TOUR_TYPE}}</a></li> --}}
-                                        <li><a href="{{ route('tour.details') }}">{{$tourPackage->DESTINATION}}</a></li>
+                                        <li><a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">{{$tourPackage->DESTINATION}}</a></li>
                                     </ul>
                                 </div>
                             </div>

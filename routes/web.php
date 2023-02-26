@@ -53,11 +53,6 @@ Route::get('/destination-detail', function () {
 })->name("destination.detail");
 
 
-Route::get('/tour-details', function () {
-    return view('frontend.tours.tour-detail');
-})->name("tour.details");
-
-
     /*
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
@@ -73,7 +68,7 @@ Route::get('/tour-details', function () {
         Route::prefix('tours')->group(function () {
 
             Route::get('/all', 'index')->name('tours');
-            
+            Route::get('/details/{id}/{slug}', 'tourPackageDetail')->name('tour.details');
 
         });
 
