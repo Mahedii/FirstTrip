@@ -156,6 +156,20 @@
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Web Pages</span></li>
 
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarHomePage" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarHomePage">
+                        <i class="ri-file-list-3-line"></i> <span>Home</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarHomePage">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('heroSection.show') }}" class="nav-link">Hero Section</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('about-us.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>About Us</span>
                     </a>

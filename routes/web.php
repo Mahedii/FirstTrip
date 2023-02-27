@@ -9,6 +9,7 @@ use App\Http\Controllers\Common\RouteController;
 use App\Http\Controllers\Admin\Tour\TourPackageController;
 use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
 use App\Http\Controllers\Admin\StaticPage\StaticPageController;
+use App\Http\Controllers\Admin\HomePage\HomePageController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -172,6 +173,29 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/list/load/{listID}', 'poListEditPageLoad')->name('po.list.editpage.load');
             Route::post('/list/update/{listID}', 'poListUpdate')->name('po.list.update');
             Route::get('/list/delete/{listID}', 'poListDelete')->name('po.list.delete');
+
+        });
+
+    });
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Home Page Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(HomePageController::class)->group(function() {
+
+        Route::prefix('home-page')->group(function () {
+            Route::get('/hero-section', 'index')->name('heroSection.show');
+            Route::post('/update/{slug}', 'heroSectionUpdate')->name('heroSection.update');
+            Route::get('/delete/{slug}', 'heroSectionDelete')->name('heroSection.delete');
 
         });
 
