@@ -88,7 +88,7 @@
                             <div class="destinations-one__img">
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-1.png')}}" alt="">
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Spain</a>
+                                    <h2 class="destinations-one__title"><a href="">Spain</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -103,7 +103,7 @@
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-2.png')}}" alt="">
                                 <div class="destinations-one__content">
                                     <p class="destinations-one__sub-title">Wildlife</p>
-                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Thailand</a>
+                                    <h2 class="destinations-one__title"><a href="">Thailand</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -117,7 +117,7 @@
                             <div class="destinations-one__img">
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-3.png')}}" alt="">
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail') }}">Africa</a>
+                                    <h2 class="destinations-one__title"><a href="">Africa</a>
                                     </h2>
                                 </div>
                                 <div class="destinations-one__button">
@@ -133,7 +133,7 @@
                                 <img src="{{asset('frontend/assets/images/destination/destination-1-4.png')}}" alt="">
                                 <div class="destinations-one__content">
                                     <h2 class="destinations-one__title"><a
-                                            href="{{ route('destination.detail') }}">Australia</a></h2>
+                                            href="">Australia</a></h2>
                                 </div>
                                 <div class="destinations-one__button">
                                     <a href="#">6 tours</a>
@@ -148,7 +148,7 @@
                                 <div class="destinations-one__content">
                                     <p class="destinations-one__sub-title">Adventure</p>
                                     <h2 class="destinations-one__title"><a
-                                            href="{{ route('destination.detail') }}">Switzerland</a></h2>
+                                            href="">Switzerland</a></h2>
                                 </div>
                                 <div class="destinations-one__button">
                                     <a href="#">6 tours</a>
