@@ -4,7 +4,7 @@
         <!--Page Header Start-->
         <section class="page-header">
             <div class="page-header__top">
-                <div class="page-header-bg" style="background-image: url(frontend/assets/images/backgrounds/page-header-bg.jpg)">
+                <div class="page-header-bg" style="background-image: url('{{ asset('/frontend/assets/images/backgrounds/page-header-bg.jpg') }}')">
                 </div>
                 <div class="page-header-bg-overly"></div>
                 <div class="container">
@@ -38,12 +38,14 @@
 
                             <div class="popular-tours__single">
                                 <div class="popular-tours__img">
-                                    <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
-                                    <div class="popular-tours__icon">
+                                    <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
+                                        <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
+                                    </a>
+                                    {{-- <div class="popular-tours__icon">
                                         <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
                                             <i class="fa fa-heart"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="popular-tours__content">
                                     {{-- <div class="popular-tours__stars">

@@ -94,7 +94,7 @@
                     </div>
                 </li>
 
-                <li class="menu-title"><i class="ri-more-fill"></i> <span>Tours</span></li>
+                <li class="menu-title"><i class="ri-more-fill"></i> <span>Packages</span></li>
 
                 {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="widgets.php">
@@ -105,7 +105,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarPackage" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarPackage">
-                        <i class="ri-file-list-3-line"></i> <span>Packages</span>
+                        <i class="ri-file-list-3-line"></i> <span>Tours</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarPackage">
                         <ul class="nav nav-sm flex-column">
@@ -134,6 +134,44 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+
+                <li class="menu-title"><i class="ri-more-fill"></i> <span>Key Airline Partners</span></li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarPartners" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarPartners">
+                        <i class="ri-file-list-3-line"></i> <span>Partners</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarPartners">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('destination.country.lists') }}" class="nav-link">View</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="menu-title"><i class="ri-more-fill"></i> <span>Web Pages</span></li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                        <i class="ri-file-list-3-line"></i> <span>About Us</span>
+                    </a>
+                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                        <i class="ri-file-list-3-line"></i> <span>FAQs</span>
+                    </a>
+                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                        <i class="ri-file-list-3-line"></i> <span>Terms & Conditions</span>
+                    </a>
+                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                        <i class="ri-file-list-3-line"></i> <span>Privacy Policy</span>
+                    </a>
+                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                        <i class="ri-file-list-3-line"></i> <span>Refund Policy</span>
+                    </a>
+
                 </li>
 
             </ul>

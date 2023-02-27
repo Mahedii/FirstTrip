@@ -29,14 +29,16 @@ class ToursController extends Controller{
 
     public function index(){
 
-        $tourPackages = TourPackage::all();
+        $tourPackages = TourPackage::select("*")->where('STATUS', '1')->get();
 
         return view('frontend.tours.tours',compact('tourPackages'));
     }
 
     public function tourPackageDetail($id,$slug){
 
-        $tourPackageData = TourPackage::select("*")->where('SLUG', $slug)->get();
+        $tourPackageData = TourPackage::select("*")
+            ->where('SLUG', $slug)
+            ->where('STATUS', '1')->get();
         $tourPackageInfoData = TourPackageInfo::select("*")->where('PACKAGE_ID', $id)->get();
         $tourPackageImageData = TourPackageImage::select('tour_packages.SLUG', 'tour_package_images.*')
         ->join('tour_packages', 'tour_packages.id', '=', 'tour_package_images.PACKAGE_ID')

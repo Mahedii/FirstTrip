@@ -47,7 +47,6 @@
                     </div>
 
 
-
                     @foreach($tourPackageData as $tourPackage)
 
                         <form method="POST" action="{{ route('tour.package.update', $tourPackage->SLUG) }}" enctype="multipart/form-data" id="tourPackageForm">
@@ -146,7 +145,7 @@
                                                     <div class="mb-3">
                                                         <label for="OVERVIEW" class="form-label">Overview <span class="text-danger">*</span></label>
                                                         <p class="text-muted mb-2">Add tour overview</p>
-                                                        <textarea class="form-control" name="OVERVIEW" rows="5">{{ $tourPackage->OVERVIEW }}</textarea>
+                                                        <textarea class="form-control" id="ckeditor-classic" name="OVERVIEW" rows="5">{{ $tourPackage->OVERVIEW }}</textarea>
                                                         @if ($errors->has('OVERVIEW'))
                                                             <span class="text-danger">{{ $errors->first('OVERVIEW') }}</span>
                                                         @endif
@@ -334,7 +333,11 @@
 
                                 <div class="card-body">
 
-                                    @foreach ($tourPackageInfoData as $tourPackageInfo)
+                                    @php($tourPackageInfoDataCount = $tourPackageInfoData->count())
+
+                                    @foreach ($tourPackageInfoData as $key => $tourPackageInfo)
+
+                                        
 
                                         <form method="POST" action="{{ route('tourPackagePlanUpdate') }}" id="tourPlanForm-{{$tourPackageInfo->id}}">
                                             @csrf
@@ -350,7 +353,7 @@
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
                                                         <label for="TOUR_PLAN_TITLE_BODY" class="form-label">Tour Plan Title Body<span class="text-danger">*</span></label>
-                                                        <textarea class="form-control" name="TOUR_PLAN_TITLE_BODY" rows="3">{{$tourPackageInfo->TOUR_PLAN_TITLE_BODY}}</textarea>
+                                                        <textarea class="form-control" name="TOUR_PLAN_TITLE_BODY" id="TOUR_PLAN_TITLE_BODY_{{$key}}" rows="3">{{$tourPackageInfo->TOUR_PLAN_TITLE_BODY}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

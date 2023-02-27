@@ -198,7 +198,7 @@ class TourPackageController extends Controller{
 
 
 
-        return redirect()->route('tour.package.lists')->with('crudMsg','Package '.$request->PACKAGE_NAME.' Added Successfully');
+        return redirect()->back()->with('crudMsg','Package '.$request->PACKAGE_NAME.' Added Successfully');
     }
 
 

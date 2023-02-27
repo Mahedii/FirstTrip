@@ -249,12 +249,14 @@
                             @foreach($tourPackages as $key => $tourPackage)
                                 <div class="popular-tours__single">
                                     <div class="popular-tours__img">
-                                        <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
-                                        <div class="popular-tours__icon">
+                                        <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
+                                            <img src="{!! asset($tourPackage->FILE_PATH) !!}" alt="">
+                                        </a>
+                                        {{-- <div class="popular-tours__icon">
                                             <a href="{{ route('tour.details',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}">
                                                 <i class="fa fa-heart"></i>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="popular-tours__content">
                                         {{-- <div class="popular-tours__stars">

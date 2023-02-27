@@ -15,11 +15,7 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#">Destinations</a>
-                                    <ul>
-                                        <li><a href="{{ route('destination') }}">Destinations</a></li>
-                                        <li><a href="{{ route('destination.detail') }}">Destinations Detail</a></li>
-                                    </ul>
+                                    <a href="{{ route('destination') }}">Destinations</a>
                                 </li>
                                 <li class="dropdown">
                                     <a href="{{ route('tours') }}">Tours</a>

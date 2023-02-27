@@ -58,7 +58,7 @@
                                 <div class="card">
 
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Add Package</h4>
+                                        <h4 class="card-title mb-0 flex-grow-1">Add Tour Package</h4>
 
                                     </div><!-- end card header -->
 
@@ -106,7 +106,7 @@
                                                     <select class="js-example-basic-single" id="select-country" name="COUNTRY_ID">
 
                                                         <option>Select Country</option>
-                                                        
+
                                                         @foreach ($packageCountries as $countryData)
                                                             <option value="{{$countryData->id}}">{{$countryData->COUNTRY_NAME}}</option>
                                                         @endforeach
@@ -145,9 +145,9 @@
                                                 <div class="mb-3">
                                                     <label for="OVERVIEW" class="form-label">Overview <span class="text-danger">*</span></label>
                                                     <p class="text-muted mb-2">Add tour overview</p>
-                                                    <textarea class="form-control" name="OVERVIEW" rows="5"></textarea>
+                                                    <textarea class="form-control" id="ckeditor-classic" name="OVERVIEW" rows="5"></textarea>
                                                     @if ($errors->has('OVERVIEW'))
-                                                        <span class="text-danger">{{ $errors->first('OVERVIEW') }}</span>
+                                                        <span class="text-danger myeditablediv">{{ $errors->first('OVERVIEW') }}</span>
                                                     @endif
                                                 </div>
                                             </div><!--end col-->
@@ -304,6 +304,10 @@
 
                                     <div class="card">
 
+                                        <div class="card-header align-items-center d-flex">
+                                            <h4 class="card-title mb-0 flex-grow-1">Tour Plan #1</h4>
+                                        </div>
+
                                         <div class="card-body">
 
                                             <div class="row mb-3">
@@ -319,7 +323,7 @@
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
                                                         <label for="TOUR_PLAN_TITLE_BODY" class="form-label">Tour Plan Title Body<span class="text-danger">*</span></label>
-                                                        <textarea class="form-control @error('TOUR_PLAN_TITLE_BODY.*') is-invalid @enderror" name="TOUR_PLAN_TITLE_BODY[]" rows="3"></textarea>
+                                                        <textarea class="form-control @error('TOUR_PLAN_TITLE_BODY.*') is-invalid @enderror" id="TOUR_PLAN_TITLE_BODY_CK_EDITOR_1" name="TOUR_PLAN_TITLE_BODY[]" rows="3"></textarea>
                                                         @if ($errors->has('TOUR_PLAN_TITLE_BODY.*'))
                                                             <span class="text-danger">{{ $errors->first('TOUR_PLAN_TITLE_BODY.*') }}</span>
                                                         @endif

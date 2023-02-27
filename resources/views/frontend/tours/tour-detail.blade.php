@@ -24,13 +24,14 @@
                     @foreach($tourPackageImageData as $key => $imageList)
                         <div class="swiper-slide">
                             <div class="image-layer"
-                                style="background-image: url('{{ asset('/frontend/assets/images/tour_packages/'.$imageList->SLUG.'/' .$imageList->FILE_NAME) }}')"></div>
+                                style="background-image: url('{{ asset('/frontend/assets/images/tour_packages/'.$imageList->SLUG.'/' .$imageList->FILE_NAME) }}')">
+                            </div>
                             <div class="container">
                                 <div class="swiper-slide-inner">
-                                    <div class="tour-details-slider_icon">
+                                    {{-- <div class="tour-details-slider_icon">
                                         <a href="#"><i class="fab fa-youtube"></i></a>
                                         <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                                                     <h6>{{$tpData->DURATION}}</h6>
                                                 </div>
                                             </li>
-                                            <li>
+                                            {{-- <li>
                                                 <div class="icon">
                                                     <span class="icon-user"></span>
                                                 </div>
@@ -78,7 +79,7 @@
                                                     <p>Min Age</p>
                                                     <h6>12 +</h6>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <div class="icon">
                                                     <span class="icon-plane"></span>
@@ -152,7 +153,7 @@
                             <div class="tour-details-two__left">
                                 <div class="tour-details-two__overview">
                                     <h3 class="tour-details-two__title">Overview</h3>
-                                    <p class="tour-details-two__overview-text">{{$tpData->OVERVIEW}}</p>
+                                    <p class="tour-details-two__overview-text">{!! html_entity_decode($tpData->OVERVIEW, ENT_QUOTES, 'UTF-8') !!}</p>
 
                                     <div class="tour-details-two__overview-bottom">
                                         <h3 class="tour-details-two-overview__title">Included/Exclude</h3>
@@ -200,35 +201,38 @@
                                                 </div>
                                                 <div class="accrodion-content">
                                                     <div class="inner">
-                                                        {{$tourPackageInfo->TOUR_PLAN_TITLE_BODY}}
+                                                        {!! html_entity_decode($tourPackageInfo->TOUR_PLAN_TITLE_BODY, ENT_QUOTES, 'UTF-8') !!}
+                                                        {{-- {{$tourPackageInfo->TOUR_PLAN_TITLE_BODY}} --}}
                                                     </div><!-- /.inner -->
                                                 </div>
                                             </div>
 
                                         @endforeach
 
-                                        
+
                                     </div>
                                 </div>
 
                                 <div class="tour-details-two__related-tours">
-                                    <h3 class="tour-details-two__title">Tour Plan</h3>
+                                    <h3 class="tour-details-two__title">Similar Packages</h3>
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <!--Popular Tours Two Single-->
                                             <div class="popular-tours__single">
                                                 <div class="popular-tours__img">
-                                                    <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-1.jpg')}}" alt="">
-                                                    <div class="popular-tours__icon">
+                                                    <a href="">
+                                                        <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-1.jpg')}}" alt="">
+                                                    </a>
+                                                    {{-- <div class="popular-tours__icon">
                                                         <a href="">
                                                             <i class="fa fa-heart"></i>
                                                         </a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="popular-tours__content">
-                                                    <div class="popular-tours__stars">
+                                                    {{-- <div class="popular-tours__stars">
                                                         <i class="fa fa-star"></i> 8.0 Superb
-                                                    </div>
+                                                    </div> --}}
                                                     <h3 class="popular-tours__title"><a href="">National
                                                             Park 2 Days Tour</a></h3>
                                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
@@ -244,17 +248,19 @@
                                             <!--Popular Tours Two Single-->
                                             <div class="popular-tours__single">
                                                 <div class="popular-tours__img">
-                                                    <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-5.jpg')}}" alt="">
-                                                    <div class="popular-tours__icon">
+                                                    <a href="">
+                                                        <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-5.jpg')}}" alt="">
+                                                    </a>
+                                                    {{-- <div class="popular-tours__icon">
                                                         <a href="">
                                                             <i class="fa fa-heart"></i>
                                                         </a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="popular-tours__content">
-                                                    <div class="popular-tours__stars">
+                                                    {{-- <div class="popular-tours__stars">
                                                         <i class="fa fa-star"></i> 8.0 Superb
-                                                    </div>
+                                                    </div> --}}
                                                     <h3 class="popular-tours__title"><a href="">National
                                                             Park 2 Days Tour</a></h3>
                                                     <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
