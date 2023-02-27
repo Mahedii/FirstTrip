@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Frontend\Tour;
 
-use App\Http\Controllers\Controller;
+use Response;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Response;
-
 use App\Models\Tour\TourPackage;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 use App\Models\Tour\TourPackageInfo;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Tour\TourPackageImage;
-use App\Models\Tour\TourPackageIncludedService;
 use App\Models\Tour\TourPackageExcludedService;
+use App\Models\Tour\TourPackageIncludedService;
 
 class ToursController extends Controller{
 
@@ -33,6 +33,17 @@ class ToursController extends Controller{
 
         return view('frontend.tours.tours',compact('tourPackages'));
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Load Tours Package detail Page
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
 
     public function tourPackageDetail($id,$slug){
 

@@ -81,7 +81,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="Thumbnail_Image" class="form-label">Destination Image</label>
+                                                    <label for="Thumbnail_Image" class="form-label">Destination Image (285*285 or 580*285)</label>
                                                     <p class="text-muted">Add tour package destination image.</p>
                                                     <input type="file" class="form-control" id="singleImageFile" name="singleFile" >
                                                 </div>

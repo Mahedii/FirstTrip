@@ -9,9 +9,10 @@ use App\Http\Controllers\Common\RouteController;
 use App\Http\Controllers\Admin\Tour\TourPackageController;
 use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
 
-use App\Http\Controllers\Frontend\Tour\ToursController;
-use App\Http\Controllers\Frontend\Home\HomeController;
 
+use App\Http\Controllers\Frontend\Home\HomeController;
+use App\Http\Controllers\Frontend\Tour\ToursController;
+use App\Http\Controllers\Frontend\Destination\DestinationController;
 
 
 
@@ -43,15 +44,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/destination', function () {
-    return view('frontend.destination.destination');
-})->name("destination");
-
-Route::get('/destination-detail', function () {
-    return view('frontend.destination.destination-detail');
-})->name("destination.detail");
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Destination Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(DestinationController::class)->group(function() {
+
+        Route::prefix('destination')->group(function () {
+
+            Route::get('/all', 'index')->name('destination');
+            Route::get('/details/{id}/{slug}', 'destinationDetail')->name('destination.detail');
+
+        });
+
+    });
 
 
     /*
@@ -118,7 +133,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     });
 
-    Route::get('{any}', [RouteController::class, 'index'])->name('index');
+    // Route::get('{any}', [RouteController::class, 'index'])->name('index');
 
 
     /*
