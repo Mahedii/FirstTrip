@@ -97,7 +97,7 @@
 
                                                         <ul class="dropdown-menu dropdown-menu-end">
                                                             <li>
-                                                                <a href="{{ route('tourPackage.detail.view',$tourPackage->SLUG) }}" target="_blank" class="dropdown-item">
+                                                                <a href="{{ route('tourPackage.detail.view',['id' => $tourPackage->id, 'slug' => $tourPackage->SLUG]) }}" target="_blank" class="dropdown-item">
                                                                     <i class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                     View
                                                                 </a>

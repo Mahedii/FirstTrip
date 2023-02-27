@@ -12,7 +12,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Packages</a></li>
-                                    <li class="breadcrumb-item active">Edit</li>
+                                    <li class="breadcrumb-item active">Show</li>
                                 </ol>
                             </div>
 
@@ -57,7 +57,7 @@
                                     <div class="card">
 
                                         <div class="card-header align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Edit Package</h4>
+                                            <h4 class="card-title mb-0 flex-grow-1">Show Package</h4>
 
                                         </div><!-- end card header -->
 
@@ -105,10 +105,7 @@
                                                         <select class="js-example-basic-single" id="select-country" name="COUNTRY_ID">
 
                                                             <option value="{{ $tourPackage->COUNTRY_ID }}" selected>{{ $tourPackage->COUNTRY_NAME }}</option>
-                                                            <option>Select Country</option>
-                                                            @foreach ($packageCountries as $countryData)
-                                                                <option @if(old('COUNTRY_ID') == $countryData->id) selected @endif value="{{ $countryData->id }}">{{ $countryData->COUNTRY_NAME }}</option>
-                                                            @endforeach
+
 
                                                         </select>
                                                         @if ($errors->has('COUNTRY_ID'))
@@ -163,12 +160,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
 
-                                            @if(session('crudMsgPO'))
-                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                    <strong>{{ session('crudMsgPO') }}</strong>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>
-                                            @endif
+
 
                                             <div class="alert alert-danger" style="display:none"></div>
 
@@ -186,7 +178,7 @@
                                                             <div class="mb-3">
                                                                 <label for="Thumbnail_Image" class="form-label">Thumbnail Image (370*259)</label>
                                                                 <p class="text-muted">Add tour package thumbnail image.</p>
-                                                                <input type="file" class="form-control" id="singleImageFile" name="singleFile" >
+
                                                             </div>
 
                                                             <div class="preview-image-before-upload mb-3">
@@ -200,7 +192,7 @@
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Slider Image (1894*580)</label>
                                                                 <p class="text-muted">Add tour package details slider images.</p>
-                                                                <input type="file" class="form-control" id="multipleImageFile" name="multipleImageFile[]" multiple="multiple">
+
                                                             </div>
                                                             <div class="images-preview-div">
                                                                 @foreach($tourPackageImageData as $imageList)
@@ -229,9 +221,7 @@
                                     </div>
 
 
-                                    <div class="text-end mb-3">
-                                        <button type="submit" class="btn btn-success w-sm">Update Package</button>
-                                    </div>
+
                                 </div>
                                 <!-- end col -->
 
@@ -247,12 +237,6 @@
                     <div class="row">
                         <div class="col-lg-12">
 
-                            @if(session('crudMsgPO'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>{{ session('crudMsgPO') }}</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            @endif
 
                             <div class="alert alert-danger" style="display:none"></div>
 
@@ -270,9 +254,7 @@
 
                                             @foreach ($tourPackageIncludedServiceData as $includedServiceData)
 
-                                                <form method="POST" action="{{ route('incServiceUpdate') }}" enctype="multipart/form-data" id="incServiceForm-{{$includedServiceData->id}}">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{$includedServiceData->id}}">
+
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="mb-3">
@@ -282,11 +264,7 @@
                                                         </div>
                                                         <div class="col-md-4"></div>
                                                     </div>
-                                                    <div class="text-start mb-3">
-                                                        <button type="submit" class="btn btn-soft-secondary w-sm edit-included-item" data-id="{{$includedServiceData->id}}"><i class="ri-pencil-fill me-1 align-bottom"></i> Update</button>
-                                                        <a href="javascript:void()" class="btn btn-soft-danger w-sm delete-included-item" data-id="{{$includedServiceData->id}}" onclick="return confirm('Are you sure you want to delete this?');"><i class="ri-delete-bin-fill me-1 align-bottom"></i> Delete</a>
-                                                    </div>
-                                                </form>
+
 
                                             @endforeach
 
@@ -296,9 +274,7 @@
 
                                             @foreach ($tourPackageExcludedServiceData as $excludedServiceData)
 
-                                                <form method="POST" action="{{ route('excServiceUpdate') }}" id="excServiceForm-{{$excludedServiceData->id}}">
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{$excludedServiceData->id}}">
+
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="mb-3">
@@ -308,12 +284,7 @@
                                                         </div>
                                                         <div class="col-md-4"></div>
                                                     </div>
-                                                    <div class="text-start mb-3">
-                                                        <button type="submit" class="btn btn-soft-secondary w-sm"><i class="ri-pencil-fill me-1 align-bottom"></i> Update</button>
-                                                        <a href="javascript:void()" class="btn btn-soft-danger w-sm delete-excluded-item" data-id="{{$excludedServiceData->id}}" onclick="return confirm('Are you sure you want to delete this?');"><i class="ri-delete-bin-fill me-1 align-bottom"></i> Delete</a>
-                                                    </div>
 
-                                                </form>
 
                                             @endforeach
 
@@ -338,11 +309,6 @@
                                     @foreach ($tourPackageInfoData as $key => $tourPackageInfo)
 
 
-
-                                        <form method="POST" action="{{ route('tourPackagePlanUpdate') }}" id="tourPlanForm-{{$tourPackageInfo->id}}">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$tourPackageInfo->id}}">
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
@@ -358,12 +324,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="text-start mb-5">
-                                                <button type="submit" class="btn btn-soft-secondary w-sm"><i class="ri-pencil-fill me-1 align-bottom"></i> Update</button>
-                                                <a href="javascript:void()" data-id="{{$tourPackageInfo->id}}" class="btn btn-soft-danger w-sm delete-packageinfo-item" onclick="return confirm('Are you sure you want to delete this?');"><i class="ri-delete-bin-fill me-1 align-bottom"></i> Delete</a>
-                                            </div>
 
-                                        </form>
 
                                     @endforeach
 

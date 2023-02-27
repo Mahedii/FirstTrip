@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\Admin\Tour;
 
-use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Session;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use File;
 use Image;
-use Validator;
+use Session;
 use Response;
+use Validator;
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
-
-use App\Models\Tour\TourPackage;
-use App\Models\Tour\TourPackageInfo;
-use App\Models\Tour\TourPackageImage;
-use App\Models\Tour\TourPackageIncludedService;
-use App\Models\Tour\TourPackageExcludedService;
-use App\Models\Country\PackageCountry;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\Log\ActivityLog;
+use App\Models\Tour\TourPackage;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+use App\Models\Tour\TourPackageInfo;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Tour\TourPackageImage;
+use App\Models\Country\PackageCountry;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Tour\TourPackageExcludedService;
+use App\Models\Tour\TourPackageIncludedService;
 
 class TourPackageController extends Controller{
 
@@ -76,7 +76,24 @@ class TourPackageController extends Controller{
     |--------------------------------------------------------------------------
     */
 
-    public function tourPackageDetailPageLoad($slug){
+    public function tourPackageDetailPageLoad($id,$slug){
+
+        $tourPackageData = TourPackage::select('tour_packages.*', 'package_countries.COUNTRY_NAME')
+        ->join('package_countries', 'package_countries.id', '=', 'tour_packages.COUNTRY_ID')
+        ->where('tour_packages.SLUG', '=', $slug)
+        ->get();
+        $tourPackageInfoData = TourPackageInfo::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageImageData = TourPackageImage::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageIncludedServiceData = TourPackageIncludedService::select("*")->where('PACKAGE_ID', $id)->get();
+        $tourPackageExcludedServiceData = TourPackageExcludedService::select("*")->where('PACKAGE_ID', $id)->get();
+
+        $tourPackages = TourPackage::select('tour_packages.id', 'tour_packages.PACKAGE_NAME')
+            ->orderBy('tour_packages.id', 'DESC')
+        	->get();
+
+        $packageCountries = PackageCountry::all();
+
+        return view('admin.tours.view.show',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData','tourPackages','packageCountries'));
 
     }
 

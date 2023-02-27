@@ -8,6 +8,7 @@ use App\Http\Controllers\Common\RouteController;
 
 use App\Http\Controllers\Admin\Tour\TourPackageController;
 use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
+use App\Http\Controllers\Admin\StaticPage\StaticPageController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -193,7 +194,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::prefix('tour-package')->group(function () {
 
             Route::get('/show', 'index')->name('tour.package.lists');
-            Route::get('/detail/{slug}', 'tourPackageDetailPageLoad')->name('tourPackage.detail.view');
+            Route::get('/detail/{id}/{slug}', 'tourPackageDetailPageLoad')->name('tourPackage.detail.view');
             Route::get('/load/store-page', 'loadTourPackageAddPage')->name('load.tourPackage.storepage');
             Route::post('/add', 'tourPackageInsert')->name('tour.package.insert');
             Route::get('/load/{id}/{slug}', 'loadTourPackageEditPage')->name('load.tourPackage.editpage');
@@ -236,6 +237,40 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/load/{slug}', 'loadDestinationCountryEditPage')->name('load.destination.country.editpage');
             Route::post('/update/{slug}', 'destinationCountryUpdate')->name('destination.country.update');
             Route::get('/delete/{slug}', 'destinationCountryDelete')->name('destination.country.delete');
+
+        });
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Static Pages Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(StaticPageController::class)->group(function() {
+
+        Route::prefix('page')->group(function () {
+
+            Route::get('/show/about-us', 'aboutUsPage')->name('about-us.load');
+            Route::post('/update/about-us', 'aboutUsUpdate')->name('about-us.update');
+
+            Route::get('/show/faq', 'faqPage')->name('faq.load');
+            Route::post('/update/faq', 'faqUpdate')->name('faq.update');
+
+            Route::get('/show/refund-policy', 'refundPolicyPage')->name('refund-policy.load');
+            Route::post('/update/efund-policy', 'refundPolicyUpdate')->name('refund-policy.update');
+
+            Route::get('/show/terms-condition', 'termsConditionPage')->name('terms-condition.load');
+            Route::post('/update/terms-condition', 'termsConditionUpdate')->name('terms-condition.update');
+
+            Route::get('/show/privacy-policy', 'privacyPolicyPage')->name('privacy-policy.load');
+            Route::post('/update/privacy-policy', 'privacyPolicyUpdate')->name('privacy-policy.update');
 
         });
 

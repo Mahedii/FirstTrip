@@ -156,19 +156,19 @@
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Web Pages</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                    <a class="nav-link" href="{{ route('about-us.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>About Us</span>
                     </a>
-                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                    <a class="nav-link" href="{{ route('faq.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>FAQs</span>
                     </a>
-                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                    <a class="nav-link" href="{{ route('terms-condition.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>Terms & Conditions</span>
                     </a>
-                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                    <a class="nav-link" href="{{ route('privacy-policy.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>Privacy Policy</span>
                     </a>
-                    <a class="nav-link" href="{{ route('destination.country.lists') }}">
+                    <a class="nav-link" href="{{ route('refund-policy.load') }}">
                         <i class="ri-file-list-3-line"></i> <span>Refund Policy</span>
                     </a>
 
