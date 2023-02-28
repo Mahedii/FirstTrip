@@ -302,6 +302,10 @@
                                             <input type="text" placeholder="Number of Pax" name="pax">
                                         </div>
 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" name="remember">I agree to all terms & conditions
+                                        </div>
+
                                         <button type="submit" class="thm-btn tour-details-two__sidebar-btn">Book
                                             Now</button>
                                     </form>

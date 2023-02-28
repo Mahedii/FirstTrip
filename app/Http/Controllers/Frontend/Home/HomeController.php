@@ -14,6 +14,7 @@ use App\Models\Tour\TourPackageInfo;
 use App\Models\Tour\TourPackageImage;
 use App\Models\Tour\TourPackageIncludedService;
 use App\Models\Tour\TourPackageExcludedService;
+use App\Models\HeroSection\HeroSection;
 
 class HomeController extends Controller{
 
@@ -30,7 +31,8 @@ class HomeController extends Controller{
     public function index(){
 
         $tourPackages = TourPackage::all();
+        $heroSectionData = HeroSection::all();
 
-        return view('frontend.index',compact('tourPackages'));
+        return view('frontend.index',compact('tourPackages','heroSectionData'));
     }
 }

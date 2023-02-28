@@ -66,7 +66,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label for="TITLE" class="form-label">Title<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control @error('TITLE') is-invalid @enderror" value="{{ old('TITLE') }}" name="TITLE">
@@ -89,7 +89,7 @@
                                             </div><!--end col-->
 
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label for="Thumbnail_Image" class="form-label">Slider Image (1894*694)</label>
                                                     <p class="text-muted">Add hero slider image.</p>
@@ -119,6 +119,76 @@
 
                     </form>
 
+                    <div class="row">
+
+                        <div class="card">
+
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Hero Section Data</h5>
+                            </div>
+
+                            <div class="card-body">
+                                <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Title</th>
+                                            <th>Sub Title</th>
+                                            <th>Create Time</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        @foreach($heroSectionData as $key => $heroSectionData)
+
+                                            <tr data-id="{{ $heroSectionData->id }}" class="package-{{ $heroSectionData->id }}">
+                                                <td>{{ ++$key }}</td>
+                                                <td>{{ $heroSectionData->TITLE }}</td>
+
+                                                <td>{{ $heroSectionData->SUBTITLE }}</td>
+                                                <td>{{ Carbon\Carbon::parse($heroSectionData->created_at)->diffForHumans() }}</td>
+                                                <td>
+                                                    <div class="dropdown d-inline-block">
+                                                        <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill align-middle"></i>
+                                                        </button>
+
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+
+
+                                                            <li>
+                                                                <a href="{{ route('load.heroSection.editpage',['id' => $heroSectionData->id, 'slug' => $heroSectionData->SLUG]) }}" class="dropdown-item edit-item-btn">
+                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="{{ route('heroSection.delete',$heroSectionData->SLUG) }}" class="dropdown-item edit-item-btn" onclick="return confirm('Are you sure you want to delete this?');">
+                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -128,7 +198,7 @@
         <!-- End Page-content -->
 
         @include('admin.tours.ajax.single-image')
-        
+
 
 
     @endsection

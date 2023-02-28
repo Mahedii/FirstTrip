@@ -20,51 +20,25 @@
                 }}'>
 
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="image-layer"
-                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-1.jpg);"></div>
-                        <div class="image-layer-overlay"></div>
-                        <div class="container">
-                            <div class="swiper-slide-inner">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <h2> Travel & Adventures</h2>
-                                        <p>Where Would You Like To Go?</p>
+                    @foreach ($heroSectionData as $heroSection)
+
+                        <div class="swiper-slide">
+                            <div class="image-layer"
+                                style="background-image: url('{{ asset($heroSection->FILE_PATH) }}');"></div>
+                            <div class="image-layer-overlay"></div>
+                            <div class="container">
+                                <div class="swiper-slide-inner">
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <h2> {{$heroSection->TITLE}}</h2>
+                                            <p>{{$heroSection->SUBTITLE}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-layer"
-                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-2.jpg);"></div>
-                        <div class="image-layer-overlay"></div>
-                        <div class="container">
-                            <div class="swiper-slide-inner">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <h2> Travel & Adventures</h2>
-                                        <p>Where Would You Like To Go?</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-layer"
-                            style="background-image: url(frontend/assets/images/backgrounds/main-slider-1-3.jpg);"></div>
-                        <div class="image-layer-overlay"></div>
-                        <div class="container">
-                            <div class="swiper-slide-inner">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <h2> Travel & Adventures</h2>
-                                        <p>Where Would You Like To Go?</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
 
                 <div class="main-slider-nav">
