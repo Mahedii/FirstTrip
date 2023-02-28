@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Tour\TourPackageController;
 use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
 use App\Http\Controllers\Admin\StaticPage\StaticPageController;
 use App\Http\Controllers\Admin\HomePage\HomePageController;
+use App\Http\Controllers\Admin\HomePage\AirlinePartnerController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -111,6 +112,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::get('/refund-policy', 'refundPage')->name('refund-policy-page');
         Route::get('/privacy-policy', 'privacyPage')->name('privacy-policy-page');
         Route::get('/terms-condition', 'termsConditionPage')->name('terms-condition-page');
+
+        Route::post('/tour-package/booking/insert', 'packageBookingInsert')->name('tour-package.booking.insert');
 
     });
 
@@ -220,6 +223,21 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/hero-section/load/{id}/{slug}', 'loadHeroSectionEditPage')->name('load.heroSection.editpage');
             Route::post('/hero-section/update', 'heroSectionUpdate')->name('heroSection.update');
             Route::get('/hero-section/delete/{slug}', 'heroSectionDelete')->name('heroSection.delete');
+
+        });
+
+    });
+
+
+    Route::controller(AirlinePartnerController::class)->group(function() {
+
+        Route::prefix('airline-partners')->group(function () {
+
+            Route::get('/add', 'index')->name('airlinePartners.show');
+            Route::post('/insert', 'airlinePartnersInsert')->name('airlinePartners.insert');
+            Route::get('/load/{id}/{slug}', 'loadAirlinePartnersEditPage')->name('load.airlinePartners.editpage');
+            Route::post('/update', 'airlinePartnersUpdate')->name('airlinePartners.update');
+            Route::get('/delete/{slug}', 'airlinePartnersDelete')->name('airlinePartners.delete');
 
         });
 

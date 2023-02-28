@@ -137,22 +137,6 @@
                 </li>
 
 
-                <li class="menu-title"><i class="ri-more-fill"></i> <span>Key Airline Partners</span></li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarPartners" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarPartners">
-                        <i class="ri-file-list-3-line"></i> <span>Partners</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarPartners">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('destination.country.lists') }}" class="nav-link">View</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Web Pages</span></li>
 
                 <li class="nav-item">
@@ -164,6 +148,9 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('heroSection.show') }}" class="nav-link">Hero Section</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('airlinePartners.show') }}" class="nav-link">Key Airline Partners</a>
                             </li>
                         </ul>
                     </div>

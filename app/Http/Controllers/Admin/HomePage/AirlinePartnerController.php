@@ -15,16 +15,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
-use App\Models\HeroSection\HeroSection;
 use App\Models\Partners\AirlinePartner;
 
-class HomePageController extends Controller{
+class AirlinePartnerController extends Controller{
 
     /*
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     |
-    | Load hero section update Page
+    | Load Airline Partner update Page
     |
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
@@ -32,9 +31,9 @@ class HomePageController extends Controller{
 
     public function index(){
 
-        $heroSectionData = HeroSection::all();
+        $keyPartnerData = AirlinePartner::all();
 
-        return view('admin.static-page.home.hero-section.add',compact('heroSectionData'));
+        return view('admin.static-page.home.key-partners.add',compact('keyPartnerData'));
     }
 
 
@@ -42,28 +41,27 @@ class HomePageController extends Controller{
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     |
-    | Hero section data Insert into database
+    | Airline Partner data Insert into database
     |
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     */
 
-    public function heroSectionInsert(Request $request){
+    public function airlinePartnersInsert(Request $request){
 
         // dd($request);
 
         $validated = Validator::make($request->all(), [
-            'TITLE'=>'required',
-            'SUBTITLE'=>'required',
+            'NAME'=>'required',
             'singleImageFile' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:3048',
         ],
         [
-            'TITLE.required' => 'Please give a title',
+            'NAME.required' => 'Please give a name',
             // 'SL.*.required' => 'Please Insert SL No',
         ]);
 
 
-        $SLUG = $this->generateSlug($request->TITLE);
+        $SLUG = $this->generateSlug($request->NAME);
 
         $fileInput = $request->file('singleFile');
 
@@ -71,19 +69,18 @@ class HomePageController extends Controller{
 
             $fileName = $fileInput->getClientOriginalName();
 
-            $path = public_path('frontend/assets/images/hero_section/'.$SLUG.'/');
+            $path = public_path('frontend/assets/images/partner/'.$SLUG.'/');
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
             $request->singleFile->move($path, $fileName);
-            $FilePath = 'frontend/assets/images/hero_section/'.$SLUG.'/'.$fileName;
+            $FilePath = 'frontend/assets/images/partner/'.$SLUG.'/'.$fileName;
 
         }
 
-        HeroSection::create([
-            'TITLE' => $request->TITLE,
-            'SUBTITLE' => $request->SUBTITLE,
+        AirlinePartner::create([
+            'NAME' => $request->NAME,
             'SLUG' => $SLUG,
             'FILE_NAME' => $fileName,
             'FILE_PATH' => $FilePath,
@@ -91,12 +88,10 @@ class HomePageController extends Controller{
             'created_at' => Carbon::now()
         ]);
 
-        // dd($request->COUNTRY_ID);
-
 
         $color_array = ['card-dark', 'card-info', 'card-primary', 'card-secondary', 'card-success', 'card-warning', 'card-danger'];
         $random_color = Arr::random($color_array);
-        $ACTION = "Created hero section image and text.";
+        $ACTION = "Added a key partner";
 
         $log = ActivityLog::create([
             'USER_ID' => Auth::user()->id,
@@ -105,7 +100,7 @@ class HomePageController extends Controller{
             'CARD_COLOR' => $random_color
         ]);
 
-        return redirect()->back()->with('crudMsg','Created hero section image and text.');
+        return redirect()->back()->with('crudMsg','Added a key partner');
     }
 
 
@@ -113,18 +108,18 @@ class HomePageController extends Controller{
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     |
-    | Fetch Selected Tour Package Data
+    | Fetch Selected Airline Partner Data
     |
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     */
 
-    public function loadHeroSectionEditPage($id,$slug){
+    public function loadAirlinePartnersEditPage($id,$slug){
 
-        $heroSectionData = HeroSection::select("*")->where('id', $id)->get();
+        $keyPartnerData = AirlinePartner::select("*")->where('id', $id)->get();
 
 
-        return view('admin.static-page.home.hero-section.edit',compact('heroSectionData'));
+        return view('admin.static-page.home.key-partners.edit',compact('keyPartnerData'));
 
     }
 
@@ -133,29 +128,28 @@ class HomePageController extends Controller{
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     |
-    | Update Hero Section Data
+    | Update Airline Partner Data
     |
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     */
 
-    public function heroSectionUpdate(Request $request){
+    public function airlinePartnersUpdate(Request $request){
 
         $validated = Validator::make($request->all(), [
-            'TITLE'=>'required',
-            'SUBTITLE'=>'required',
+            'NAME'=>'required',
             'singleImageFile' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:3048',
         ],
         [
-            'TITLE.required' => 'Please give a title',
+            'NAME.required' => 'Please give a name',
             // 'SL.*.required' => 'Please Insert SL No',
         ]);
 
 
-        $heroSection = HeroSection::where('SLUG', $request->SLUG)->first();
+        $airlinePartner = AirlinePartner::where('SLUG', $request->SLUG)->first();
 
-        $filePath = $heroSection->FILE_PATH;
-        $fileName = $heroSection->FILE_NAME;
+        $filePath = $airlinePartner->FILE_PATH;
+        $fileName = $airlinePartner->FILE_NAME;
 
         $fileInput = $request->file('singleFile');
 
@@ -163,20 +157,19 @@ class HomePageController extends Controller{
 
             $fileName = $fileInput->getClientOriginalName();
 
-            $path = public_path('frontend/assets/images/hero_section/'.$SLUG.'/');
+            $path = public_path('frontend/assets/images/partner/'.$SLUG.'/');
             if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
             }
 
             $request->singleFile->move($path, $fileName);
-            $filePath = 'frontend/assets/images/hero_section/'.$SLUG.'/'.$fileName;
+            $filePath = 'frontend/assets/images/partner/'.$SLUG.'/'.$fileName;
 
         }
 
 
-        HeroSection::where('SLUG', $request->SLUG)->update([
-            'TITLE' => $request->TITLE,
-            'SUBTITLE' => $request->SUBTITLE,
+        AirlinePartner::where('SLUG', $request->SLUG)->update([
+            'NAME' => $request->NAME,
             'FILE_NAME' => $fileName,
             'FILE_PATH' => $filePath,
             'EDITOR' => Auth::user()->id,
@@ -185,7 +178,7 @@ class HomePageController extends Controller{
 
         $color_array = ['card-dark', 'card-info', 'card-primary', 'card-secondary', 'card-success', 'card-warning', 'card-danger'];
         $random_color = Arr::random($color_array);
-        $ACTION = "Updated Hero Section ".$request->TITLE.".";
+        $ACTION = "Updated key partner ".$request->NAME." data.";
 
         $log = ActivityLog::create([
             'USER_ID' => Auth::user()->id,
@@ -194,7 +187,7 @@ class HomePageController extends Controller{
             'CARD_COLOR' => $random_color
         ]);
 
-        return redirect()->route('heroSection.show')->with('crudMsg','Hero Section '.$request->TITLE.' Updated Successfully');
+        return redirect()->route('airlinePartners.show')->with('crudMsg','Key partner '.$request->NAME.' Updated Successfully');
 
     }
 
@@ -203,30 +196,30 @@ class HomePageController extends Controller{
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     |
-    | Delete Selected Hero Section Data
+    | Delete Selected Airline Partner Data
     |
     |--------------------------------------------------------------------------
     |--------------------------------------------------------------------------
     */
 
-    public function heroSectionDelete($slug){
+    public function airlinePartnersDelete($slug){
 
-        $heroSection = HeroSection::select("*")->where('SLUG', $slug)->first();
-        $TITLE = $heroSection->TITLE;
-        $FILE_PATH = $heroSection->FILE_PATH;
+        $airlinePartner = AirlinePartner::select("*")->where('SLUG', $slug)->first();
+        $NAME = $airlinePartner->NAME;
+        $FILE_PATH = $airlinePartner->FILE_PATH;
 
 
         if( File::exists(public_path($FILE_PATH)) ) {
             File::delete(public_path($FILE_PATH));
         }
 
-        File::deleteDirectory(public_path('frontend/assets/images/hero_section/'.$slug));
+        File::deleteDirectory(public_path('frontend/assets/images/partner/'.$slug));
 
-        HeroSection::where('SLUG', $slug)->delete();
+        AirlinePartner::where('SLUG', $slug)->delete();
 
         $color_array = ['card-dark', 'card-info', 'card-primary', 'card-secondary', 'card-success', 'card-warning', 'card-danger'];
         $random_color = Arr::random($color_array);
-        $ACTION = "Deleted hero section ".$TITLE.".";
+        $ACTION = "Deleted key partner ".$NAME.".";
 
         $log = ActivityLog::create([
             'USER_ID' => Auth::user()->id,
@@ -235,7 +228,7 @@ class HomePageController extends Controller{
             'CARD_COLOR' => $random_color
         ]);
 
-        return Redirect()->back()->with('crudMsg','Hero section '.$TITLE.' data Permanently Deleted');
+        return Redirect()->back()->with('crudMsg','Key partner '.$NAME.' data Permanently Deleted');
     }
 
 
@@ -255,13 +248,13 @@ class HomePageController extends Controller{
         $slug=Str::slug($name);
         // dd($slug,"show");
 
-        if (HeroSection::where('SLUG',Str::slug($name))->exists()) {
+        if (AirlinePartner::where('SLUG',Str::slug($name))->exists()) {
 
             $original = $slug;
 
             $count = 1;
 
-            while(HeroSection::where('SLUG',$slug)->exists()) {
+            while(AirlinePartner::where('SLUG',$slug)->exists()) {
 
                 $slug = "{$original}-" . $count++;
             }

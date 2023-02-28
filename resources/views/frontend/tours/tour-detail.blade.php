@@ -280,7 +280,7 @@
                             <div class="tour-details-two__sidebar">
                                 <div class="tour-details-two__book-tours">
                                     <h3 class="tour-details-two__sidebar-title">Book Tours</h3>
-                                    <form action="#" class="tour-details-two__sidebar-form">
+                                    <form action="{{route('tour-package.booking.insert')}}" class="tour-details-two__sidebar-form">
                                         <div class="tour-details-two__sidebar-form-input">
                                             <input type="text" placeholder="Yur Name" name="name">
                                         </div>
@@ -302,12 +302,23 @@
                                             <input type="text" placeholder="Number of Pax" name="pax">
                                         </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" name="remember">I agree to all terms & conditions
+                                        <div class="tour-details-two__sidebar-form-input">
+                                            <input type="text" placeholder="Number of adult" name="adult" value="0">
                                         </div>
 
-                                        <button type="submit" class="thm-btn tour-details-two__sidebar-btn">Book
-                                            Now</button>
+                                        <div class="tour-details-two__sidebar-form-input">
+                                            <input type="text" placeholder="Number of child" name="child" value="0">
+                                        </div>
+
+                                        <div class="tour-details-two__sidebar-form-input">
+                                            <input type="text" placeholder="Number of infant" name="infant" value="0">
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" name="checkbox">I agree to all terms & conditions
+                                        </div>
+
+                                        <button type="submit" class="thm-btn tour-details-two__sidebar-btn">Book Now</button>
                                     </form>
                                 </div>
                             </div>

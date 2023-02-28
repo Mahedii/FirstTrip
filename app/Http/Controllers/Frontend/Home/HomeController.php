@@ -15,6 +15,7 @@ use App\Models\Tour\TourPackageImage;
 use App\Models\Tour\TourPackageIncludedService;
 use App\Models\Tour\TourPackageExcludedService;
 use App\Models\HeroSection\HeroSection;
+use App\Models\Partners\AirlinePartner;
 
 class HomeController extends Controller{
 
@@ -32,7 +33,8 @@ class HomeController extends Controller{
 
         $tourPackages = TourPackage::all();
         $heroSectionData = HeroSection::all();
+        $keyPartnerData = AirlinePartner::all();
 
-        return view('frontend.index',compact('tourPackages','heroSectionData'));
+        return view('frontend.index',compact('tourPackages','heroSectionData','keyPartnerData'));
     }
 }
