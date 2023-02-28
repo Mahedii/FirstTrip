@@ -59,15 +59,15 @@
 
                             <div class="alert alert-danger" style="display:none"></div>
 
-                            <div class="card">
+                            @foreach ($heroSectionData as $heroSection)
 
-                                <div class="card-body">
+                                <div class="card">
 
-                                    <div class="row mb-3">
+                                    <div class="card-body">
 
-                                        @foreach ($heroSectionData as $heroSection)
+                                        <div class="row mb-3">
 
-                                            <form method="POST" action="{{ route('incServiceUpdate') }}" enctype="multipart/form-data" id="incServiceForm-{{$heroSection->id}}">
+                                            <form method="POST" action="{{ route('heroSection.update') }}" enctype="multipart/form-data" id="heroSectionForm-{{$heroSection->id}}">
                                                 @csrf
 
                                                 <input type="hidden" name="id" value="{{$heroSection->id}}">
@@ -76,7 +76,7 @@
                                                     <div class="mb-3">
                                                         <label for="Thumbnail_Image" class="form-label">Hero Image (1894*694)</label>
                                                         <p class="text-muted">Add hero section slider image.</p>
-                                                        <input type="file" class="form-control" id="singleImageFile" name="singleFile[]" >
+                                                        <input type="file" class="form-control" id="singleImageFile" name="singleFile" >
                                                     </div>
 
                                                     <div class="preview-image-before-upload mb-3">
@@ -93,13 +93,13 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="TITLE" class="form-label">Title<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control" id="TITLE-{{$heroSection->id}}" value="{{$heroSection->TITLE}}" name="TITLE">
+                                                                <input type="text" class="form-control" value="{{$heroSection->TITLE}}" name="TITLE">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="SUBTITLE" class="form-label">Sub Title<span class="text-danger">*</span></label>
-                                                                <input type="text" class="form-control" id="SUBTITLE-{{$heroSection->id}}" value="{{$heroSection->SUBTITLE}}" name="SUBTITLE">
+                                                                <input type="text" class="form-control" value="{{$heroSection->SUBTITLE}}" name="SUBTITLE">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -114,16 +114,14 @@
 
                                             </form>
 
-                                        @endforeach
-
-
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
 
-                            <form method="POST" action="{{ route('incServiceUpdate') }}" enctype="multipart/form-data">
+                            @endforeach
+
+                            <form method="POST" action="{{ route('heroSection.insert') }}" enctype="multipart/form-data">
 
                                 <input type="hidden" id="hero-section-counter" value="1">
 
@@ -135,7 +133,7 @@
 
                             </form>
 
-                            <div class="text-end mb-3">
+                            <div class="text-start mb-3">
                                 <button class="btn btn-success w-sm" id="add-hero-section-item">Add Content</button>
                             </div>
 
@@ -153,7 +151,7 @@
         <!-- End Page-content -->
 
         @include('admin.static-page.ajax.single-image')
-        @include('admin.static-page.ajax.tour-plan')
+        @include('admin.static-page.ajax.hero-ajax')
 
 
     @endsection

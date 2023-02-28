@@ -24,6 +24,11 @@
             previewImages(this, 'div.preview-image-before-upload');
         });
 
+        $('.hero_image').on('change', function() {
+            var id = $(this).data('id');
+            previewImages(this, 'div.preview-hero-image-before-upload-'+id);
+        });
+
     });
 
 </script>

@@ -194,7 +194,8 @@ Route::group(['middleware' => ['auth']], function() {
 
         Route::prefix('home-page')->group(function () {
             Route::get('/hero-section', 'index')->name('heroSection.show');
-            Route::post('/update/{slug}', 'heroSectionUpdate')->name('heroSection.update');
+            Route::post('/insert', 'heroSectionInsert')->name('heroSection.insert');
+            Route::post('/update', 'heroSectionUpdate')->name('heroSection.update');
             Route::get('/delete/{slug}', 'heroSectionDelete')->name('heroSection.delete');
 
         });
