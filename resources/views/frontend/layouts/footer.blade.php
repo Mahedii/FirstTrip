@@ -9,8 +9,8 @@
                         <div class="footer-widget__column footer-widget__company clearfix">
                             <h3 class="footer-widget__title">Shortcut</h3>
                             <ul class="footer-widget__company-list list-unstyled">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">FAQs</a></li>
+                                <li><a href="{{route('about-page')}}">About Us</a></li>
+                                <li><a href="{{route('faq-page')}}">FAQs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -18,9 +18,9 @@
                         <div class="footer-widget__column footer-widget__explore">
                             <h3 class="footer-widget__title">Policy Links</h3>
                             <ul class="list-unstyled footer-widget__explore-list">
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Refund Policy</a></li>
+                                <li><a href="{{route('terms-condition-page')}}">Terms & Condition</a></li>
+                                <li><a href="{{route('privacy-policy-page')}}">Privacy Policy</a></li>
+                                <li><a href="{{route('refund-policy-page')}}">Refund Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <a href="tel:+92-666-888-0000">09613123123</a>
+                                        <a href="tel:09613123123">09613123123</a>
                                     </div>
                                 </li>
                                 <li>

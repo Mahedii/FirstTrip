@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\HomePage\HomePageController;
 use App\Http\Controllers\Frontend\Home\HomeController;
 use App\Http\Controllers\Frontend\Tour\ToursController;
 use App\Http\Controllers\Frontend\Destination\DestinationController;
+use App\Http\Controllers\Frontend\WebPage\CommonController;
 
 
 
@@ -89,6 +90,27 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
             Route::get('/details/{id}/{slug}', 'tourPackageDetail')->name('tour.details');
 
         });
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Webpage Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(CommonController::class)->group(function() {
+
+        Route::get('/about-us', 'aboutPage')->name('about-page');
+        Route::get('/faq', 'faqPage')->name('faq-page');
+        Route::get('/refund-policy', 'refundPage')->name('refund-policy-page');
+        Route::get('/privacy-policy', 'privacyPage')->name('privacy-policy-page');
+        Route::get('/terms-condition', 'termsConditionPage')->name('terms-condition-page');
 
     });
 

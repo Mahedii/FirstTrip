@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Frontend\Destination;
 use Response;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Tour\TourPackage;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Country\PackageCountry;
+use App\Models\Tour\TourPackage;
 
 class DestinationController extends Controller{
 
@@ -45,10 +46,10 @@ class DestinationController extends Controller{
     public function destinationDetail($id,$slug){
 
         $tourPackages = TourPackage::select("*")
-            ->where('SLUG', $slug)
             ->where('COUNTRY_ID', $id)
-            ->where('STATUS', '1')->get();
+            ->where('STATUS', '1')
+            ->get();
 
-        return view('frontend.tours.tours',compact('tourPackages'));
+        return view('frontend.destination.destination-packages',compact('tourPackages'));
     }
 }

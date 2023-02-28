@@ -3350,7 +3350,7 @@ ul {
 .site-footer {
     position: relative;
     display: block;
-    background-color: var(--thm-black);
+    background-color: var(--thm-primary);
 }
 
 .site-footer__top {
@@ -3406,7 +3406,7 @@ ul {
 
 .footer-widget__about-contact li .icon i {
     font-size: 15px;
-    color: var(--thm-primary);
+    color: var(--thm-base);
 }
 
 .footer-widget__about-contact li .text {
