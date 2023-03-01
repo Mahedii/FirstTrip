@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\DestinationCountry\DestinationCountryController;
 use App\Http\Controllers\Admin\StaticPage\StaticPageController;
 use App\Http\Controllers\Admin\HomePage\HomePageController;
 use App\Http\Controllers\Admin\HomePage\AirlinePartnerController;
+use App\Http\Controllers\Admin\HomePage\AboutSectionOneController;
+use App\Http\Controllers\Admin\HomePage\AboutSectionTwoController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -238,6 +240,30 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/load/{id}/{slug}', 'loadAirlinePartnersEditPage')->name('load.airlinePartners.editpage');
             Route::post('/update', 'airlinePartnersUpdate')->name('airlinePartners.update');
             Route::get('/delete/{slug}', 'airlinePartnersDelete')->name('airlinePartners.delete');
+
+        });
+
+    });
+
+
+    Route::controller(AboutSectionOneController::class)->group(function() {
+
+        Route::prefix('about-section')->group(function () {
+
+            Route::get('/show', 'index')->name('aboutSectionOne.show');
+            Route::post('/update', 'aboutSectionOneUpdate')->name('aboutSectionOne.update');
+
+        });
+
+    });
+
+
+    Route::controller(AboutSectionTwoController::class)->group(function() {
+
+        Route::prefix('about-section')->group(function () {
+
+            Route::get('/show', 'index')->name('aboutSectionTwo.show');
+            Route::post('/update', 'aboutSectionOneUpdate')->name('aboutSectionTwo.update');
 
         });
 

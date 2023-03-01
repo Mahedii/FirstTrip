@@ -50,6 +50,10 @@ class ToursController extends Controller{
         $tourPackageData = TourPackage::select("*")
             ->where('SLUG', $slug)
             ->where('STATUS', '1')->get();
+
+        $getTourPackageData = TourPackage::select("*")->where('SLUG', $slug)->where('STATUS', '1')->first();
+        $COUNTRY_ID = $getTourPackageData->COUNTRY_ID;
+
         $tourPackageInfoData = TourPackageInfo::select("*")->where('PACKAGE_ID', $id)->get();
         $tourPackageImageData = TourPackageImage::select('tour_packages.SLUG', 'tour_package_images.*')
         ->join('tour_packages', 'tour_packages.id', '=', 'tour_package_images.PACKAGE_ID')
@@ -58,6 +62,9 @@ class ToursController extends Controller{
         $tourPackageIncludedServiceData = TourPackageIncludedService::select("*")->where('PACKAGE_ID', $id)->get();
         $tourPackageExcludedServiceData = TourPackageExcludedService::select("*")->where('PACKAGE_ID', $id)->get();
 
-        return view('frontend.tours.tour-detail',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData'));
+        $similarPackageData = TourPackage::select("PACKAGE_NAME","DESTINATION","COST","FILE_PATH","id","SLUG")
+        ->where('COUNTRY_ID', $COUNTRY_ID)->limit(6)->get();
+
+        return view('frontend.tours.tour-detail',compact('tourPackageData','tourPackageInfoData','tourPackageImageData','tourPackageIncludedServiceData','tourPackageExcludedServiceData','similarPackageData'));
     }
 }

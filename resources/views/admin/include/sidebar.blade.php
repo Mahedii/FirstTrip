@@ -56,24 +56,7 @@
                     </div>
                 </li>
 
-                {{-- <li class="menu-title"><i class="ri-more-fill"></i> <span>Destinations</span></li>
-
-                <li class="nav-item"> <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebarLanding">
-                        <i class="ri-rocket-line"></i> <span data-key="t-landing">Landing</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLanding">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="landing.php" class="nav-link" data-key="t-one-page"> One-page </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="nft-landing.php" class="nav-link" data-key="t-nft-landing">  Nft-landing <span
-                                        class="badge badge-pill bg-danger" data-key="t-new"> New</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
+                
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Destinations</span></li>
 
@@ -95,12 +78,6 @@
                 </li>
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Packages</span></li>
-
-                {{-- <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.php">
-                        <i class="ri-honour-line"></i> <span>Widgets</span>
-                    </a>
-                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarPackage" data-bs-toggle="collapse" role="button"
@@ -151,6 +128,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('airlinePartners.show') }}" class="nav-link">Key Airline Partners</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('aboutSectionOne.show') }}" class="nav-link">About Section 01</a>
                             </li>
                         </ul>
                     </div>

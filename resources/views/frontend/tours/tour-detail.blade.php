@@ -195,7 +195,7 @@
 
                                         @foreach($tourPackageInfoData as $tourPackageInfo)
 
-                                            <div class="accrodion">
+                                            <div class="accrodion custom-accrodion">
                                                 <div class="accrodion-title">
                                                     <h4>{{$tourPackageInfo->TOUR_PLAN_TITLE_TEXT}}</h4>
                                                 </div>
@@ -216,62 +216,29 @@
                                 <div class="tour-details-two__related-tours">
                                     <h3 class="tour-details-two__title">Similar Packages</h3>
                                     <div class="row">
-                                        <div class="col-xl-6">
-                                            <!--Popular Tours Two Single-->
-                                            <div class="popular-tours__single">
-                                                <div class="popular-tours__img">
-                                                    <a href="">
-                                                        <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-1.jpg')}}" alt="">
-                                                    </a>
-                                                    {{-- <div class="popular-tours__icon">
-                                                        <a href="">
-                                                            <i class="fa fa-heart"></i>
+                                           
+                                        @foreach($similarPackageData as $similarPackages)
+                                            <div class="col-xl-6">
+                                                <!--Popular Tours Two Single-->
+                                                <div class="popular-tours__single">
+                                                    <div class="popular-tours__img">
+                                                        <a href="{{ route('tour.details',['id' => $similarPackages->id, 'slug' => $similarPackages->SLUG]) }}">
+                                                            <img src="{!! asset($similarPackages->FILE_PATH) !!}" alt="">
                                                         </a>
-                                                    </div> --}}
+                                                    </div>
+                                                    <div class="popular-tours__content">
+                                                        <h3 class="popular-tours__title"><a href="">{{$similarPackages->PACKAGE_NAME}}</a></h3>
+                                                        <p class="popular-tours__rate"><span>{{$similarPackages->COST}}</span> / Per Person</p>
+                                                        <ul class="popular-tours__meta list-unstyled">
+                                                            <li><a href="{{ route('tour.details',['id' => $similarPackages->id, 'slug' => $similarPackages->SLUG]) }}">{{$similarPackages->DURATION}}</a></li>
+                                                            <li><a href="{{ route('tour.details',['id' => $similarPackages->id, 'slug' => $similarPackages->SLUG]) }}">{{$similarPackages->DESTINATION}}</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="popular-tours__content">
-                                                    {{-- <div class="popular-tours__stars">
-                                                        <i class="fa fa-star"></i> 8.0 Superb
-                                                    </div> --}}
-                                                    <h3 class="popular-tours__title"><a href="">National
-                                                            Park 2 Days Tour</a></h3>
-                                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                                    <ul class="popular-tours__meta list-unstyled">
-                                                        <li><a href="">3 Days</a></li>
-                                                        <li><a href="">12+</a></li>
-                                                        <li><a href="">Los Angeles</a></li>
-                                                    </ul>
-                                                </div>
+                                            
                                             </div>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <!--Popular Tours Two Single-->
-                                            <div class="popular-tours__single">
-                                                <div class="popular-tours__img">
-                                                    <a href="">
-                                                        <img src="{{asset('frontend/assets/images/resources/popular-tours-two__img-5.jpg')}}" alt="">
-                                                    </a>
-                                                    {{-- <div class="popular-tours__icon">
-                                                        <a href="">
-                                                            <i class="fa fa-heart"></i>
-                                                        </a>
-                                                    </div> --}}
-                                                </div>
-                                                <div class="popular-tours__content">
-                                                    {{-- <div class="popular-tours__stars">
-                                                        <i class="fa fa-star"></i> 8.0 Superb
-                                                    </div> --}}
-                                                    <h3 class="popular-tours__title"><a href="">National
-                                                            Park 2 Days Tour</a></h3>
-                                                    <p class="popular-tours__rate"><span>$1870</span> / Per Person</p>
-                                                    <ul class="popular-tours__meta list-unstyled">
-                                                        <li><a href="">3 Days</a></li>
-                                                        <li><a href="">12+</a></li>
-                                                        <li><a href="">Los Angeles</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -280,46 +247,85 @@
                             <div class="tour-details-two__sidebar">
                                 <div class="tour-details-two__book-tours">
                                     <h3 class="tour-details-two__sidebar-title">Book Tours</h3>
-                                    <form action="{{route('tour-package.booking.insert')}}" class="tour-details-two__sidebar-form">
+
+                                    <div class="col-sm" style="margin-bottom: 1rem;">
+                                        @if(session('crudMsg'))
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong>{{ session('crudMsg') }}</strong>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <form method="POST" action="{{route('tour-package.booking.insert')}}" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Yur Name" name="name">
+                                            <input type="text" class="@error('NAME') is-invalid @enderror" value="{{ old('NAME') }}" placeholder="Your Name" name="NAME">
+                                            @if ($errors->has('NAME'))
+                                                <span class="text-danger">{{ $errors->first('NAME') }}</span>
+                                            @endif
                                         </div>
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Contact No" name="contact_no">
+                                            <input type="text" class="@error('CONTACT_NO') is-invalid @enderror" value="{{ old('CONTACT_NO') }}" placeholder="Contact No" name="CONTACT_NO">
+                                            @if ($errors->has('CONTACT_NO'))
+                                                <span class="text-danger">{{ $errors->first('CONTACT_NO') }}</span>
+                                            @endif
                                         </div>
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Email" name="email">
+                                            <input type="text" class="@error('EMAIL') is-invalid @enderror" value="{{ old('EMAIL') }}" placeholder="Email" name="EMAIL">
+                                            @if ($errors->has('EMAIL'))
+                                                <span class="text-danger">{{ $errors->first('EMAIL') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" name="date" placeholder="Select date" id="datepicker">
+                                            <input type="text" class="@error('START_DATE') is-invalid @enderror" value="{{ old('START_DATE') }}" name="START_DATE" placeholder="Select date" id="datepicker">
                                             <div class="tour-details-two__sidebar-form-icon">
                                                 <i class="fa fa-angle-down"></i>
                                             </div>
+                                            @if ($errors->has('START_DATE'))
+                                                <span class="text-danger">{{ $errors->first('START_DATE') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Number of Pax" name="pax">
+                                            <input type="text" class="@error('TOTAL_PAX') is-invalid @enderror" value="{{ old('TOTAL_PAX') }}" placeholder="Number of Pax" name="TOTAL_PAX">
+                                            @if ($errors->has('TOTAL_PAX'))
+                                                <span class="text-danger">{{ $errors->first('TOTAL_PAX') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Number of adult" name="adult" value="0">
+                                            <input type="text" class="@error('TOTAL_ADULT') is-invalid @enderror" value="{{ old('TOTAL_ADULT') }}" placeholder="Number of adult" name="TOTAL_ADULT">
+                                            @if ($errors->has('TOTAL_ADULT'))
+                                                <span class="text-danger">{{ $errors->first('TOTAL_ADULT') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Number of child" name="child" value="0">
+                                            <input type="text" class="@error('TOTAL_CHILD') is-invalid @enderror" value="{{ old('TOTAL_CHILD') }}" placeholder="Number of child" name="TOTAL_CHILD">
+                                            @if ($errors->has('TOTAL_CHILD'))
+                                                <span class="text-danger">{{ $errors->first('TOTAL_CHILD') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="tour-details-two__sidebar-form-input">
-                                            <input type="text" placeholder="Number of infant" name="infant" value="0">
+                                            <input type="text" class="@error('TOTAL_INFANT') is-invalid @enderror" value="{{ old('TOTAL_INFANT') }}" placeholder="Number of infant" name="TOTAL_INFANT">
+                                            @if ($errors->has('TOTAL_INFANT'))
+                                                <span class="text-danger">{{ $errors->first('TOTAL_INFANT') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" name="checkbox">I agree to all terms & conditions
+                                            <input class="form-check-input @error('checkbox') is-invalid @enderror" type="checkbox" name="checkbox">I agree to all <a target="_blank" href='{{route("terms-condition-page")}}' style="color:#703F98">terms & conditions</a> 
+                                            @if ($errors->has('checkbox'))
+                                                <span class="text-danger">{{ $errors->first('checkbox') }}</span>
+                                            @endif
                                         </div>
 
                                         <button type="submit" class="thm-btn tour-details-two__sidebar-btn">Book Now</button>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -329,5 +335,16 @@
             <!--Tour Details Two End-->
 
         @endforeach
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // $(document).on('click','.custom-accrodion',function() {
+                $('.custom-accrodion').click(function() {
+                    alert("H");
+                    $(this).toggleClass( "active" );
+                    $(this).closest('accrodion-content').style('display:none');
+                });
+            });
+        </script>
 
     @endsection

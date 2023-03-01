@@ -138,73 +138,49 @@
 
         <!--About One Start-->
         <section class="about-one">
-            <div class="about-one-shape-1 wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+            <!-- <div class="about-one-shape-1 wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                 <img src="{{asset('frontend/assets/images/shapes/about-one-shape-1.png')}}" alt="">
             </div>
             <div class="about-one-shape-2 float-bob-y"><img src="{{asset('frontend/assets/images/shapes/about-one-shape-2.png')}}" alt="">
-            </div>
+            </div> -->
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6 wow fadeInLeft" data-wow-duration="1500ms">
-                        <div class="about-one__left">
-                            <div class="about-one__img-box">
-                                <div class="about-one__img">
-                                    <img src="{{asset('frontend/assets/images/resources/about-one-img-1.png')}}" alt="">
-                                </div>
-                                <div class="about-one__call">
-                                    <div class="about-one__call-icon">
-                                        <span class="icon-phone-call"></span>
+                    @foreach($aboutSectionOneData as $aboutSectionOne)
+                        <div class="col-xl-6 wow fadeInLeft" data-wow-duration="1500ms">
+                            <div class="about-one__left">
+                                <div class="about-one__img-box">
+                                    <div class="about-one__img">
+                                        <img src="{!! asset($aboutSectionOne->FILE_PATH) !!}" alt="">
                                     </div>
-                                    <div class="about-one__call-number">
-                                        <p>Book Tour Now</p>
-                                        <h4><a href="tel:666-888-0000">666 888 0000</a></h4>
-                                    </div>
-                                </div>
-                                <div class="about-one__discount">
-                                    <h2>30%</h2>
-                                    <h3>Discount</h3>
+                                    <!-- <div class="about-one__call">
+                                        <div class="about-one__call-icon">
+                                            <span class="icon-phone-call"></span>
+                                        </div>
+                                        <div class="about-one__call-number">
+                                            <p>Book Tour Now</p>
+                                            <h4><a href="tel:666-888-0000">666 888 0000</a></h4>
+                                        </div>
+                                    </div> -->
+                                    @if($aboutSectionOne->DISCOUNT)
+                                        <div class="about-one__discount">
+                                            <h2>{{ $aboutSectionOne->DISCOUNT }}</h2>
+                                            <h3>Discount</h3>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="about-one__right">
-                            <div class="section-title text-left">
-                                <span class="section-title__tagline">Get to know us</span>
-                                <h2 class="section-title__title">Plan Your Trip with Trevily</h2>
+                        <div class="col-xl-6">
+                            <div class="about-one__right">
+                                <div class="section-title text-left">
+                                    <span class="section-title__tagline">{{ $aboutSectionOne->TITLE }}</span>
+                                    <h2 class="section-title__title">{{ $aboutSectionOne->SUBTITLE }}</h2>
+                                </div>
+                                <p class="about-one__right-text">{!! html_entity_decode($aboutSectionOne->TITLE_BODY, ENT_QUOTES, 'UTF-8') !!}</p>
+                                <!-- <a href="#" class="about-one__btn thm-btn">Book with us now</a> -->
                             </div>
-                            <p class="about-one__right-text">There are many variations of passages of available but the
-                                majority have suffered alteration in some form, by injected hum randomised words which
-                                don't look even slightly.</p>
-                            <ul class="list-unstyled about-one__points">
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Invest in your simply neighborhood</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Support people in free text extreme need</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Largest global industrial business community</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a href="#" class="about-one__btn thm-btn">Book with us now</a>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -253,7 +229,7 @@
         </section>
         <!--Popular Tours End-->
 
-        <!--Video One Start-->
+        <!--About Two Start-->
         <section class="video-one">
             <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
                 style="background-image: url(frontend/assets/images/backgrounds/video-one-bg.jpg)"></div>
@@ -275,29 +251,29 @@
                     </div>
                     <div class="col-xl-6 col-lg-6">
                         <div class="video-one__right">
-                            <ul class="list-unstyled video-one__four-icon-boxes">
+                            <ul class="list-unstyled video-one__four-icon-boxes" style="margin-top:100px">
                                 <li>
-                                    <div class="video-one__icon-box">
+                                    <!-- <div class="video-one__icon-box">
                                         <span class="icon-deer"></span>
-                                    </div>
+                                    </div> -->
                                     <h4 class="video-one__icon-box-title"><a href="#">Wildlife <br> Tours</a></h4>
                                 </li>
                                 <li>
-                                    <div class="video-one__icon-box">
+                                    <!-- <div class="video-one__icon-box">
                                         <span class="icon-paragliding"></span>
-                                    </div>
+                                    </div> -->
                                     <h4 class="video-one__icon-box-title"><a href="#">Paragliding <br> Tours</a></h4>
                                 </li>
                                 <li>
-                                    <div class="video-one__icon-box">
+                                    <!-- <div class="video-one__icon-box">
                                         <span class="icon-flag"></span>
-                                    </div>
+                                    </div> -->
                                     <h4 class="video-one__icon-box-title"><a href="#">Adventure <br> Tours</a></h4>
                                 </li>
                                 <li>
-                                    <div class="video-one__icon-box">
+                                    <!-- <div class="video-one__icon-box">
                                         <span class="icon-hang-gliding"></span>
-                                    </div>
+                                    </div> -->
                                     <h4 class="video-one__icon-box-title"><a href="#">Hang Gliding <br> Tours</a></h4>
                                 </li>
                             </ul>
@@ -306,7 +282,7 @@
                 </div>
             </div>
         </section>
-        <!--Video One End-->
+        <!--About Two End-->
 
         <!--Partner Start-->
         <section class="brand-two">
