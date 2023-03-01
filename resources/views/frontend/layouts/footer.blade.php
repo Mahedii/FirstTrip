@@ -10,7 +10,7 @@
                             <h3 class="footer-widget__title">Shortcut</h3>
                             <ul class="footer-widget__company-list list-unstyled">
                                 <li><a href="{{route('about-page')}}">About Us</a></li>
-                                <li><a href="{{route('faq-page')}}">FAQs</a></li>
+                                {{-- <li><a href="{{route('faq-page')}}">FAQs</a></li> --}}
                             </ul>
                         </div>
                     </div>
@@ -18,9 +18,9 @@
                         <div class="footer-widget__column footer-widget__explore">
                             <h3 class="footer-widget__title">Policy Links</h3>
                             <ul class="list-unstyled footer-widget__explore-list">
-                                <li><a href="{{route('terms-condition-page')}}">Terms & Condition</a></li>
-                                <li><a href="{{route('privacy-policy-page')}}">Privacy Policy</a></li>
-                                <li><a href="{{route('refund-policy-page')}}">Refund Policy</a></li>
+                                <li><a target="_blank" href="{{route('terms-condition-page')}}">Terms & Condition</a></li>
+                                {{-- <li><a href="{{route('privacy-policy-page')}}">Privacy Policy</a></li>
+                                <li><a href="{{route('refund-policy-page')}}">Refund Policy</a></li> --}}
                             </ul>
                         </div>
                     </div>
