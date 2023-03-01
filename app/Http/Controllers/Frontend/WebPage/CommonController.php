@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Session;
 use Response;
 // use Validator;
-use Illuminate\Validation\Validator; 
+use Illuminate\Validation\Validator;
 use Carbon\Carbon;
 use App\Models\StaticPage\StaticPage;
 use App\Models\Booking\PackageBooking;
@@ -56,6 +56,7 @@ class CommonController extends Controller{
 
         $validated = $this->validate($request, [
             'NAME'=>'required',
+            'PACKAGE_ID'=>'required',
             'CONTACT_NO'=>'required|numeric|digits:11',
             'EMAIL'=>'required|email',
             'START_DATE'=>'required',
@@ -84,9 +85,10 @@ class CommonController extends Controller{
         ]);
 
 
-        
+
         PackageBooking::create([
             'NAME' => $request->NAME,
+            'PACKAGE_ID' => $request->PACKAGE_ID,
             'CONTACT_NO' => $request->CONTACT_NO,
             'EMAIL' => $request->EMAIL,
             'START_DATE' => $request->START_DATE,
@@ -100,7 +102,7 @@ class CommonController extends Controller{
         // dd($request->COUNTRY_ID);
 
 
-        
+
 
         return redirect()->back()->with('crudMsg','Booking request created successfully.');
     }

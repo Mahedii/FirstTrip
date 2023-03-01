@@ -17,6 +17,8 @@ use App\Models\Tour\TourPackageExcludedService;
 use App\Models\HeroSection\HeroSection;
 use App\Models\Partners\AirlinePartner;
 use App\Models\AboutSection\AboutSectionOne;
+use App\Models\AboutSection\AboutSectionTwo;
+use App\Models\Country\PackageCountry;
 
 class HomeController extends Controller{
 
@@ -36,7 +38,10 @@ class HomeController extends Controller{
         $heroSectionData = HeroSection::all();
         $keyPartnerData = AirlinePartner::all();
         $aboutSectionOneData = AboutSectionOne::select("*")->where('id', '1')->get();
+        $aboutSectionTwoData = AboutSectionTwo::select("*")->where('id', '1')->get();
+        $destinationData = PackageCountry::select("*")->limit(6)->get();
 
-        return view('frontend.index',compact('tourPackages','heroSectionData','keyPartnerData','aboutSectionOneData'));
+
+        return view('frontend.index',compact('tourPackages','heroSectionData','keyPartnerData','aboutSectionOneData','aboutSectionTwoData','destinationData'));
     }
 }

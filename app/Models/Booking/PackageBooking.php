@@ -11,6 +11,7 @@ class PackageBooking extends Model
 
     protected $fillable = [
         'NAME',
+        'PACKAGE_ID',
         'CONTACT_NO',
         'EMAIL',
         'START_DATE',

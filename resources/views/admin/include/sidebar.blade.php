@@ -56,7 +56,7 @@
                     </div>
                 </li>
 
-                
+
 
                 <li class="menu-title"><i class="ri-more-fill"></i> <span>Destinations</span></li>
 
@@ -107,7 +107,7 @@
                     <div class="collapse menu-dropdown" id="sidebarBooking">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('destination.country.lists') }}" class="nav-link">View</a>
+                                <a href="{{ route('bookings.show') }}" class="nav-link">View</a>
                             </li>
                         </ul>
                     </div>
@@ -131,6 +131,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('aboutSectionOne.show') }}" class="nav-link">About Section 01</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('aboutSectionTwo.show') }}" class="nav-link">About Section 02</a>
                             </li>
                         </ul>
                     </div>

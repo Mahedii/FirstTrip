@@ -120,6 +120,6 @@ class AboutSectionOneController extends Controller{
 
 
 
-        return redirect()->back()->with('crudMsg','Updated about section-01 ".$request->TITLE." data Successfully');
+        return redirect()->back()->with('crudMsg','Updated about section-01 '.$request->TITLE.' data Successfully');
     }
 }

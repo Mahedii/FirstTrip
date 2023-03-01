@@ -1,6 +1,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home One || Tevily || Tevily HTML Template For Tour</title>
+<title>FirstTRip</title>
 
 <!-- favicons Icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset('frontend/assets/images/favicons/apple-touch-icon.png')}}" />

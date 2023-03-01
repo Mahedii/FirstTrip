@@ -57,79 +57,21 @@
                     <h2 class="section-title__title">Go Exotic Places</h2>
                 </div>
                 <div class="row masonary-layout">
-                    <div class="col-xl-3 col-lg-3">
-                        <div class="destinations-one__single">
+                    @foreach ($destinationData as $key => $destination)
+                        <div class="col-xl-4 col-lg-4">
                             <div class="destinations-one__img">
-                                <img src="{{asset('frontend/assets/images/destination/destination-1-1.png')}}" alt="">
+                                <a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">
+                                    <img src="{!! asset($destination->FILE_PATH) !!}" alt="">
+                                </a>
                                 <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="">Spain</a>
-                                    </h2>
+                                    <h2 class="destinations-one__title"><a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">{{$destination->COUNTRY_NAME}}</a></h2>
                                 </div>
-                                <div class="destinations-one__button">
+                                {{-- <div class="destinations-one__button">
                                     <a href="#">6 tours</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="destinations-one__single">
-                            <div class="destinations-one__img">
-                                <img src="{{asset('frontend/assets/images/destination/destination-1-2.png')}}" alt="">
-                                <div class="destinations-one__content">
-                                    <p class="destinations-one__sub-title">Wildlife</p>
-                                    <h2 class="destinations-one__title"><a href="">Thailand</a>
-                                    </h2>
-                                </div>
-                                <div class="destinations-one__button">
-                                    <a href="#">6 tours</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3">
-                        <div class="destinations-one__single">
-                            <div class="destinations-one__img">
-                                <img src="{{asset('frontend/assets/images/destination/destination-1-3.png')}}" alt="">
-                                <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a href="">Africa</a>
-                                    </h2>
-                                </div>
-                                <div class="destinations-one__button">
-                                    <a href="#">6 tours</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="destinations-one__single">
-                            <div class="destinations-one__img">
-                                <img src="{{asset('frontend/assets/images/destination/destination-1-4.png')}}" alt="">
-                                <div class="destinations-one__content">
-                                    <h2 class="destinations-one__title"><a
-                                            href="">Australia</a></h2>
-                                </div>
-                                <div class="destinations-one__button">
-                                    <a href="#">6 tours</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="destinations-one__single">
-                            <div class="destinations-one__img">
-                                <img src="{{asset('frontend/assets/images/destination/destination-1-5.png')}}" alt="">
-                                <div class="destinations-one__content">
-                                    <p class="destinations-one__sub-title">Adventure</p>
-                                    <h2 class="destinations-one__title"><a
-                                            href="">Switzerland</a></h2>
-                                </div>
-                                <div class="destinations-one__button">
-                                    <a href="#">6 tours</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -231,56 +173,59 @@
 
         <!--About Two Start-->
         <section class="video-one">
-            <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-                style="background-image: url(frontend/assets/images/backgrounds/video-one-bg.jpg)"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="video-one__left">
-                            <div class="video-one__video-link">
-                                <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
-                                    <div class="video-one__video-icon">
-                                        <span class="icon-play-button"></span>
-                                        <i class="ripple"></i>
-                                    </div>
-                                </a>
+            @foreach($aboutSectionTwoData as $aboutSectionTwo)
+                <div class="video-one-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+                    style="background-image: url('{{ asset($aboutSectionTwo->FILE_PATH) }}')">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="video-one__left">
+                                <div class="video-one__video-link">
+                                    <a href="{{$aboutSectionTwo->VIDEO_PATH}}" class="video-popup">
+                                        <div class="video-one__video-icon">
+                                            <span class="icon-play-button"></span>
+                                            <i class="ripple"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <p class="video-one__tagline">{{$aboutSectionTwo->TITLE}}</p>
+                                <h2 class="video-one__title">{{$aboutSectionTwo->SUBTITLE}}</h2>
                             </div>
-                            <p class="video-one__tagline">Are you ready to travel?</p>
-                            <h2 class="video-one__title">Tevily is a World Leading Online Tour Booking Platform</h2>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="video-one__right">
-                            <ul class="list-unstyled video-one__four-icon-boxes" style="margin-top:100px">
-                                <li>
-                                    <!-- <div class="video-one__icon-box">
-                                        <span class="icon-deer"></span>
-                                    </div> -->
-                                    <h4 class="video-one__icon-box-title"><a href="#">Wildlife <br> Tours</a></h4>
-                                </li>
-                                <li>
-                                    <!-- <div class="video-one__icon-box">
-                                        <span class="icon-paragliding"></span>
-                                    </div> -->
-                                    <h4 class="video-one__icon-box-title"><a href="#">Paragliding <br> Tours</a></h4>
-                                </li>
-                                <li>
-                                    <!-- <div class="video-one__icon-box">
-                                        <span class="icon-flag"></span>
-                                    </div> -->
-                                    <h4 class="video-one__icon-box-title"><a href="#">Adventure <br> Tours</a></h4>
-                                </li>
-                                <li>
-                                    <!-- <div class="video-one__icon-box">
-                                        <span class="icon-hang-gliding"></span>
-                                    </div> -->
-                                    <h4 class="video-one__icon-box-title"><a href="#">Hang Gliding <br> Tours</a></h4>
-                                </li>
-                            </ul>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="video-one__right">
+                                <ul class="list-unstyled video-one__four-icon-boxes" style="margin-top:100px">
+                                    <li>
+                                        <!-- <div class="video-one__icon-box">
+                                            <span class="icon-deer"></span>
+                                        </div> -->
+                                        <h4 class="video-one__icon-box-title"><a href="#">{{$aboutSectionTwo->TEXT_1}}</a></h4>
+                                    </li>
+                                    <li>
+                                        <!-- <div class="video-one__icon-box">
+                                            <span class="icon-paragliding"></span>
+                                        </div> -->
+                                        <h4 class="video-one__icon-box-title"><a href="#">{{$aboutSectionTwo->TEXT_2}}</a></h4>
+                                    </li>
+                                    <li>
+                                        <!-- <div class="video-one__icon-box">
+                                            <span class="icon-flag"></span>
+                                        </div> -->
+                                        <h4 class="video-one__icon-box-title"><a href="#">{{$aboutSectionTwo->TEXT_3}}</a></h4>
+                                    </li>
+                                    <li>
+                                        <!-- <div class="video-one__icon-box">
+                                            <span class="icon-hang-gliding"></span>
+                                        </div> -->
+                                        <h4 class="video-one__icon-box-title"><a href="#">{{$aboutSectionTwo->TEXT_4}}</a></h4>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </section>
         <!--About Two End-->
 
@@ -329,7 +274,7 @@
                         {{-- <div class="swiper-slide">
                             <img src="{{asset('frontend/assets/images/partner/partner-5.png')}}" alt="">
                         </div><!-- /.swiper-slide --> --}}
-                        
+
                     </div>
                 </div>
             </div>

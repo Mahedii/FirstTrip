@@ -216,7 +216,7 @@
                                 <div class="tour-details-two__related-tours">
                                     <h3 class="tour-details-two__title">Similar Packages</h3>
                                     <div class="row">
-                                           
+
                                         @foreach($similarPackageData as $similarPackages)
                                             <div class="col-xl-6">
                                                 <!--Popular Tours Two Single-->
@@ -235,10 +235,10 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            
+
                                             </div>
                                         @endforeach
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -259,6 +259,7 @@
 
                                     <form method="POST" action="{{route('tour-package.booking.insert')}}" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="PACKAGE_ID" value="{{$tpData->id}}">
                                         <div class="tour-details-two__sidebar-form-input">
                                             <input type="text" class="@error('NAME') is-invalid @enderror" value="{{ old('NAME') }}" placeholder="Your Name" name="NAME">
                                             @if ($errors->has('NAME'))
@@ -317,7 +318,7 @@
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input @error('checkbox') is-invalid @enderror" type="checkbox" name="checkbox">I agree to all <a target="_blank" href='{{route("terms-condition-page")}}' style="color:#703F98">terms & conditions</a> 
+                                            <input class="form-check-input @error('checkbox') is-invalid @enderror" type="checkbox" name="checkbox">I agree to all <a target="_blank" href='{{route("terms-condition-page")}}' style="color:#703F98">terms & conditions</a>
                                             @if ($errors->has('checkbox'))
                                                 <span class="text-danger">{{ $errors->first('checkbox') }}</span>
                                             @endif

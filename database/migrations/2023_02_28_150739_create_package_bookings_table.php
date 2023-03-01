@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('package_bookings', function (Blueprint $table) {
             $table->id();
             $table->string('NAME');
+            $table->integer('PACKAGE_ID');
             $table->string('CONTACT_NO');
             $table->string('EMAIL');
             $table->string('START_DATE');

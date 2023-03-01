@@ -15,6 +15,19 @@ return new class extends Migration
     {
         Schema::create('about_section_twos', function (Blueprint $table) {
             $table->id();
+            $table->string('TITLE');
+            $table->string('SUBTITLE');
+            $table->string('VIDEO_PATH')->nullable(true);
+            $table->string('TEXT_1');
+            $table->string('TEXT_2');
+            $table->string('TEXT_3');
+            $table->string('TEXT_4');
+            $table->string('FILE_NAME')->nullable(true);
+            $table->string('FILE_PATH')->nullable(true);
+            $table->integer('SORT_ORDER')->nullable(true);
+            $table->tinyInteger('STATUS')->default('0');
+            $table->string('CREATOR')->nullable(true);
+            $table->string('EDITOR')->nullable(true);
             $table->timestamps();
         });
     }

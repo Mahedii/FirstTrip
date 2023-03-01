@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\HomePage\HomePageController;
 use App\Http\Controllers\Admin\HomePage\AirlinePartnerController;
 use App\Http\Controllers\Admin\HomePage\AboutSectionOneController;
 use App\Http\Controllers\Admin\HomePage\AboutSectionTwoController;
+use App\Http\Controllers\Admin\Bookings\CUstomerBookingController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;
@@ -165,47 +166,6 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('{any}', [RouteController::class, 'index'])->name('index');
 
 
-    /*
-    |--------------------------------------------------------------------------
-    |--------------------------------------------------------------------------
-    |
-    | PO Routes
-    |
-    |--------------------------------------------------------------------------
-    |--------------------------------------------------------------------------
-    */
-
-    Route::controller(PurchaseOrderController::class)->group(function() {
-
-        Route::prefix('po')->group(function () {
-
-            Route::get('/show', 'index')->name('po.lists');
-
-            Route::get('/detail/{slug}', 'poListDetailPageLoad')->name('po.detail.view');
-            Route::get('/file/download/{fileName}/{filePath}', 'downloadFile')->name('po.download.file');
-
-            Route::post('/print/view', 'poPrintView')->name('po.print.view');
-            Route::post('/list/store/bill', 'poAddBill')->name('po.list.store.bill');
-
-            Route::get('/load/store-page', 'poAddPage')->name('po.add');
-
-            Route::get('/load/vat-ait/{po_no}', 'poVatAit');
-
-            Route::post('/add', 'poInsert')->name('po.insert');
-            Route::get('/load/{slug}', 'poEditPageLoad')->name('po.editpage.load');
-            Route::post('/update/{slug}', 'poUpdate')->name('po.update');
-            Route::get('/delete/{slug}', 'poDelete')->name('po.delete');
-
-            Route::post('/list/add', 'poListInsert')->name('po.list.insert');
-            Route::get('/list/load/{listID}', 'poListEditPageLoad')->name('po.list.editpage.load');
-            Route::post('/list/update/{listID}', 'poListUpdate')->name('po.list.update');
-            Route::get('/list/delete/{listID}', 'poListDelete')->name('po.list.delete');
-
-        });
-
-    });
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -248,7 +208,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::controller(AboutSectionOneController::class)->group(function() {
 
-        Route::prefix('about-section')->group(function () {
+        Route::prefix('about-section-one')->group(function () {
 
             Route::get('/show', 'index')->name('aboutSectionOne.show');
             Route::post('/update', 'aboutSectionOneUpdate')->name('aboutSectionOne.update');
@@ -260,10 +220,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::controller(AboutSectionTwoController::class)->group(function() {
 
-        Route::prefix('about-section')->group(function () {
+        Route::prefix('about-section-two')->group(function () {
 
             Route::get('/show', 'index')->name('aboutSectionTwo.show');
-            Route::post('/update', 'aboutSectionOneUpdate')->name('aboutSectionTwo.update');
+            Route::post('/update', 'aboutSectionTwoUpdate')->name('aboutSectionTwo.update');
 
         });
 
@@ -329,6 +289,31 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/load/{slug}', 'loadDestinationCountryEditPage')->name('load.destination.country.editpage');
             Route::post('/update/{slug}', 'destinationCountryUpdate')->name('destination.country.update');
             Route::get('/delete/{slug}', 'destinationCountryDelete')->name('destination.country.delete');
+
+        });
+
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    |
+    | Customer Booking Routes
+    |
+    |--------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
+    */
+
+    Route::controller(CustomerBookingController::class)->group(function() {
+
+        Route::prefix('bookings')->group(function () {
+
+            Route::get('/show', 'index')->name('bookings.show');
+
+            Route::get('/load/{id}', 'loadCustomerBookingEditPage')->name('load.bookings.editpage');
+            Route::post('/update', 'customerBookingUpdate')->name('bookings.update');
+            Route::get('/delete/{id}', 'customerBookingDelete')->name('bookings.delete');
 
         });
 
