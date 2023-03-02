@@ -155,7 +155,7 @@
                 </div>
 
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-xl-6">
                         <div class="card">
                             <div class="card-header">
@@ -165,11 +165,11 @@
                                 <div id="pie_basic" data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]' class="e-charts"></div>
                             </div>
                         </div>
-                        <!-- end card -->
-                    </div>
-                    <!-- end col -->
 
-                </div>
+                    </div>
+
+
+                </div> --}}
                 <!-- end row -->
 
 

@@ -50,6 +50,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/chart", function () {
+    return view('frontend.chart');
+})->name('chart');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

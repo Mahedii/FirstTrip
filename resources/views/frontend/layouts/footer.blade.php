@@ -55,9 +55,9 @@
                             </ul>
 
                             <div class="footer-widget__social">
-                                <a href="#"><i class="fab fa-facebook"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a target="_blank" href="https://www.facebook.com/firsttripbd/"><i class="fab fa-facebook"></i></a>
+                                <a target="_blank" href="https://www.linkedin.com/company/first-trip-limited/"><i class="fab fa-instagram"></i></a>
+                                <a target="_blank" href="https://www.instagram.com/firsttriplimited/"><i class="fab fa-linkedin"></i></a>
                             </div>
 
                         </div>
