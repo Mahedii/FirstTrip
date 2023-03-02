@@ -55,6 +55,106 @@
                     }
                 </script>
 
+
+
+                <div class="row">
+
+
+                    @php($totalBookingReq = App\Http\Controllers\Admin\Dashboard\DashboardController::totalBookingReq())
+
+                    <div class="col-xl-4 col-md-6">
+
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Booking Request</p>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                    <div>
+                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                                            <span class="counter-value" data-target="{{ $totalBookingReq }}">0</span>
+                                        </h4>
+
+                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <span class="avatar-title bg-danger rounded fs-3">
+                                            <i class="bx bx-wallet"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @php($todaysBookingReq = App\Http\Controllers\Admin\Dashboard\DashboardController::todaysBookingReq())
+
+                    <div class="col-xl-4 col-md-6">
+
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Today's Booking Requests</p>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                    <div>
+                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                                            <span class="counter-value" data-target="{{ $todaysBookingReq }}">0</span>
+                                        </h4>
+
+                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <span class="avatar-title bg-danger rounded fs-3">
+                                            <i class="bx bx-wallet"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @php($weeklyBookingReq = App\Http\Controllers\Admin\Dashboard\DashboardController::weeklyBookingReq())
+
+                    <div class="col-xl-4 col-md-6">
+
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">This weeks Booking Requests</p>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                    <div>
+                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                                            <span class="counter-value" data-target="{{ $weeklyBookingReq }}">0</span>
+                                        </h4>
+
+                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <span class="avatar-title bg-danger rounded fs-3">
+                                            <i class="bx bx-wallet"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="card">
