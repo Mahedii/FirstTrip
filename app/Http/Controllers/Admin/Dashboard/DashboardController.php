@@ -18,8 +18,25 @@ use App\Models\PO\PurchaseOrder;
 use App\Models\PO\PurchaseOrderList;
 use App\Models\PO\BillList;
 use App\Models\Customer\Customer;
+use App\Models\Booking\PackageBooking;
+use App\Models\Country\PackageCountry;
 
 class DashboardController extends Controller{
+
+
+    public static function getAllCountry()
+    {
+    	$allCountry = PackageCountry::all();
+
+    	return $allCountry;
+    }
+
+    public static function pieChart()
+    {
+    	$Laptop = PackageCountry::where('product_type','Laptop')->get();
+
+    	return view('echart',compact('laptop_count','phone_count','desktop_count'));
+    }
 
 
     public static function totalPo(){
@@ -35,7 +52,7 @@ class DashboardController extends Controller{
             ->get();
 
             foreach($pol as $data){
-                
+
                 $UNIT_PRICE = $data->UNIT_PRICE;
                 $QUANTITY = $data->QUANTITY;
                 $TOTAL = $UNIT_PRICE*$QUANTITY;
@@ -66,7 +83,7 @@ class DashboardController extends Controller{
 
                     $totalPo += $TOTAL;
                 }
-                
+
             }
         }
 
@@ -82,7 +99,7 @@ class DashboardController extends Controller{
             $getDueBill = BillList::select("*")->where('STATUS', 'DUE')->get();
 
             foreach($getDueBill as $data){
-                
+
                 // $billDetail = PurchaseOrderList::select("*")->where('PURCHASE_ORDER_LIST_ID', $data->PURCHASE_ORDER_LIST_ID)->first();
                 $billDetail = PurchaseOrderList::select('purchase_order_lists.*', 'purchase_orders.VAT', 'purchase_orders.AIT')
                 ->join('purchase_orders', 'purchase_orders.PO_NO', '=', 'purchase_order_lists.PO_NO')
@@ -120,7 +137,7 @@ class DashboardController extends Controller{
 
                     $dueBill = $TOTAL;
                 }
-                
+
             }
         }
 
@@ -137,7 +154,7 @@ class DashboardController extends Controller{
             $getPaidBill = BillList::select("*")->where('STATUS', 'PAID')->get();
 
             foreach($getPaidBill as $data){
-                
+
                 // $billDetail = PurchaseOrderList::select("*")->where('PURCHASE_ORDER_LIST_ID', $data->PURCHASE_ORDER_LIST_ID)->first();
                 $billDetail = PurchaseOrderList::select('purchase_order_lists.*', 'purchase_orders.VAT', 'purchase_orders.AIT')
                 ->join('purchase_orders', 'purchase_orders.PO_NO', '=', 'purchase_order_lists.PO_NO')
@@ -175,7 +192,7 @@ class DashboardController extends Controller{
 
                     $paidBill = $TOTAL;
                 }
-                
+
             }
         }
 
@@ -206,10 +223,10 @@ class DashboardController extends Controller{
                 if($VAT > 0){
 
                     $totalVat += ($TOTAL*($VAT/100));
-                    
+
                 }
-                
-                
+
+
             }
         }
 
@@ -240,10 +257,10 @@ class DashboardController extends Controller{
                 if($AIT > 0){
 
                     $totalAit += ($TOTAL*($AIT/100));
-                    
+
                 }
-                
-                
+
+
             }
         }
 

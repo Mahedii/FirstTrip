@@ -22,6 +22,58 @@
                 </div>
                 <!-- end page title -->
 
+                @php($getAllCountry = App\Http\Controllers\Admin\Dashboard\DashboardController::getAllCountry())
+
+                @foreach ($getAllCountry as $allCountry)
+
+                    {{-- {{$allCountry->COUNTRY_NAME}} --}}
+
+                @endforeach
+
+                <script type="text/javascript">
+                    // var array = <?php echo json_encode($getAllCountry) ?>;
+                    // var array = @json($getAllCountry);
+                    // $.each(array, function (key, value) {
+                    //     // alert(value.id);
+                    // });
+                </script>
+
+                <script type="text/javascript">
+                    console.log("value.id");
+                    var pie_basic_element = document.getElementById('pie_basic');
+                    if (pie_basic_element) {
+                        var pie_basic = echarts.init(pie_basic_element);
+                        pie_basic.setOption({
+
+
+                            data: [
+                                $.each(array, function (key, value) {
+                                    val:value.id,
+                                })
+                            ]
+                        });
+                    }
+                </script>
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0">Pie Charts</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="pie_basic" data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]' class="e-charts"></div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+
+                </div>
+                <!-- end row -->
+
+
+
                 <div class="row dash-nft">
                     <div class="col-xxl-9">
                         <div class="row">
