@@ -50,7 +50,7 @@
 
 
         <!--Destinations One Start-->
-        <section class="destinations-one">
+        <section class="destinations-one destinations-page">
             <div class="container">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">Destination lists</span>
@@ -58,7 +58,37 @@
                 </div>
                 <div class="row masonary-layout">
                     @foreach ($destinationData as $key => $destination)
-                        <div class="col-xl-4 col-lg-4">
+                        @if (++$key%2 != 0)
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="destinations-one__single">
+                                    <div class="destinations-one__img">
+                                        <a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">
+                                            <img src="{!! asset($destination->FILE_PATH) !!}" alt="">
+                                        </a>
+                                        <div class="destinations-one__content">
+                                            <h2 class="destinations-one__title"><a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">{{$destination->COUNTRY_NAME}}</a></h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="destinations-one__single">
+                                    <div class="destinations-one__img">
+                                        <a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">
+                                            <img src="{!! asset($destination->FILE_PATH) !!}" alt="">
+                                        </a>
+                                        <div class="destinations-one__content">
+
+                                            <h2 class="destinations-one__title"><a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">{{$destination->COUNTRY_NAME}}</a></h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        {{-- <div class="col-xl-4 col-lg-4">
                             <div class="destinations-one__img">
                                 <a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">
                                     <img src="{!! asset($destination->FILE_PATH) !!}" alt="">
@@ -66,11 +96,9 @@
                                 <div class="destinations-one__content">
                                     <h2 class="destinations-one__title"><a href="{{ route('destination.detail',['id' => $destination->id, 'slug' => $destination->SLUG]) }}">{{$destination->COUNTRY_NAME}}</a></h2>
                                 </div>
-                                {{-- <div class="destinations-one__button">
-                                    <a href="#">6 tours</a>
-                                </div> --}}
+
                             </div>
-                        </div>
+                        </div> --}}
                     @endforeach
 
                 </div>

@@ -338,14 +338,21 @@
         @endforeach
 
         <script type="text/javascript">
-            $(document).ready(function () {
-                // $(document).on('click','.custom-accrodion',function() {
-                $('.custom-accrodion').click(function() {
-                    alert("H");
-                    $(this).toggleClass( "active" );
-                    $(this).closest('accrodion-content').style('display:none');
-                });
-            });
+            // $(document).ready(function () {
+            //     $(document).on('click','.custom-accrodion',function() {
+            //     // $('.custom-accrodion').click(function() {
+            //         // alert("H");
+            //         // $(this).toggleClass( "active" );
+            //         if($(this).hasClass('active')) {
+            //             $(this).removeClass('active');
+            //             $(this).closest('accrodion-content').style('display:none');
+            //         } else {
+            //             $(this).addClass('active');
+            //             $(this).closest('accrodion-content').style('display:block');
+            //         }
+
+            //     });
+            // });
         </script>
 
     @endsection

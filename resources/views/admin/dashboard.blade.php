@@ -74,7 +74,7 @@
 
 
 
-                <div class="row dash-nft">
+                {{-- <div class="row dash-nft">
                     <div class="col-xxl-9">
                         <div class="row">
                             <div class="col-xl-6">
@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--end col-->
+
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-height-100">
                                     <div class="card-body">
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--end col-->
+
                             <div class="col-xl-3 col-md-6">
                                 <div class="card card-height-100">
                                     <div class="card-body">
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--end row-->
+
 
                         <div class="row">
                             <div class="col-xxl-12">
@@ -200,7 +200,7 @@
                                                                 1Y
                                                             </button>
                                                         </div>
-                                                    </div><!-- end card header -->
+                                                    </div>
                                                     <div class="row g-0 text-center">
                                                         <div class="col-6 col-sm-4">
                                                             <div class="p-3 border border-dashed border-start-0">
@@ -209,7 +209,7 @@
                                                                 <p class="text-muted mb-0">Aetworks</p>
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
+
                                                         <div class="col-6 col-sm-4">
                                                             <div class="p-3 border border-dashed border-start-0">
                                                                 <h5 class="mb-1"><span class="counter-value"
@@ -217,7 +217,7 @@
                                                                 <p class="text-muted mb-0">Auction</p>
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
+
                                                         <div class="col-6 col-sm-4">
                                                             <div class="p-3 border border-dashed border-end-0">
                                                                 <h5 class="mb-1"><span class="counter-value"
@@ -225,7 +225,7 @@
                                                                 <p class="text-muted mb-0">Creators</p>
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
+
                                                     </div>
                                                     <div id="line_chart_basic"
                                                         data-colors='["--vz-primary","--vz-success", "--vz-secondary"]'
@@ -324,11 +324,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--end col-->
+
                         </div>
-                        <!--end row-->
+
                     </div>
-                    <!--end col-->
+
 
                     <div class="col-xxl-3">
                         <div class="card">
@@ -463,12 +463,12 @@
                             </div>
                         </div>
                     </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
+
+                </div> --}}
+
 
             </div>
-            <!-- container-fluid -->
+
         </div>
         <!-- End Page-content -->
 
