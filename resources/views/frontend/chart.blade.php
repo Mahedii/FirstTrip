@@ -76,13 +76,10 @@
 
         ?>
 
-        @php($getAllCountry = App\Http\Controllers\Admin\Dashboard\DashboardController::getAllCountry())
+        @php($countryChartData = App\Http\Controllers\Admin\Dashboard\DashboardController::getAllCountry())
+        {{-- @php($countryChartData = "") --}}
 
-        @foreach ($getAllCountry as $allCountry)
 
-            {{-- {{$allCountry->COUNTRY_NAME}} --}}
-
-        @endforeach
 
         <figure class="highcharts-figure">
             <div id="container"></div>
@@ -95,6 +92,9 @@
 
 
         <script>
+            // var array = <?php echo json_encode($countryChartData) ?>;
+            var arrayData = @json($countryChartData);
+            alert(arrayData);
             // Data retrieved from https://netmarketshare.com
             Highcharts.chart('container', {
                 chart: {
@@ -146,21 +146,26 @@
                             y: 2.63
                         },
                         {
-                        name: 'Internet Explorer',
-                        y: 1.53
-                    },  {
-                        name: 'Opera',
-                        y: 1.40
-                    }, {
-                        name: 'Sogou Explorer',
-                        y: 0.84
-                    }, {
-                        name: 'QQ',
-                        y: 0.51
-                    }, {
-                        name: 'Other',
-                        y: 2.6
-                    },]
+                            name: 'Internet Explorer',
+                            y: 1.53
+                        },
+                        {
+                            name: 'Opera',
+                            y: 1.40
+                        },
+                        {
+                            name: 'Sogou Explorer',
+                            y: 0.84
+                        },
+                        {
+                            name: 'QQ',
+                            y: 0.51
+                        },
+                        {
+                            name: 'Other',
+                            y: 2.6
+                        },
+                    ]
                 }]
             });
 
