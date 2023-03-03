@@ -28,15 +28,26 @@ class DashboardController extends Controller{
     {
     	$allCountry = PackageCountry::all();
 
-        $total = $allCountry->count();
-        $countryChartData = "";
+        // $total = $allCountry->count();
+        // $countryChartData = "";
+        // foreach($allCountry as $key => $countryData){
+        //     $countryChartData = $countryChartData."{name:'".$countryData->COUNTRY_NAME."',y:".$countryData->id."},";
+        // }
 
+        // $countryChartData = [];
+        // foreach($allCountry as $key => $countryData){
+        //     $countryChartData[$key] = "{name:'".$countryData->COUNTRY_NAME."',y:".$countryData->id."}";
+        //     // $countryChartData[$key] = array("name" => "$countryData->COUNTRY_NAME","y" => "$countryData->id",);
+        // }
+
+        $countryChartData = [];
         foreach($allCountry as $key => $countryData){
-            $countryChartData = $countryChartData."{name:'".$countryData->COUNTRY_NAME."',y:'".$countryData->id."'},";
+            // $countryChartData[$key] = "{'value'=>".$countryData->id.",'name'=>".$countryData->COUNTRY_NAME."}";
+            $countryChartData[$key] = array("value" => $countryData->id,"name" => "$countryData->COUNTRY_NAME",);
         }
 
-
-    	return $countryChartData;
+        return $countryChartData;
+ 
     }
 
     public static function pieChart()
