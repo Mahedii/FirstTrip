@@ -28,12 +28,19 @@ class DashboardController extends Controller{
     {
     	// $allCountry = PackageCountry::all();
 
-        $allCountry = DB::table('tour_packages as tp')
+        // $allCountry = DB::table('tour_packages as tp')
+        // ->select('tp.PACKAGE_NAME', DB::raw('COUNT(pb.PACKAGE_ID) as NumberOfBooking'))
+        // ->leftJoin('package_bookings as pb', 'pb.PACKAGE_ID', '=', 'tp.id')
+        // ->groupBy('tp.PACKAGE_NAME','tp.SLUG')
+        // ->orderBy('NumberOfBooking','DESC')
+        // ->limit(3)
+        // ->get();
+
+        $allCountry = DB::table('package_bookings as pb')
         ->select('tp.PACKAGE_NAME', DB::raw('COUNT(pb.PACKAGE_ID) as NumberOfBooking'))
-        ->leftJoin('package_bookings as pb', 'pb.PACKAGE_ID', '=', 'tp.id')
+        ->leftJoin('tour_packages as tp', 'tp.id', '=', 'pb.PACKAGE_ID')
         ->groupBy('tp.PACKAGE_NAME','tp.SLUG')
         ->orderBy('NumberOfBooking','DESC')
-        ->limit(3)
         ->get();
 
         // $total = $allCountry->count();
