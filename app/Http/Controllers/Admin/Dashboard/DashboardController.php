@@ -26,7 +26,15 @@ class DashboardController extends Controller{
 
     public static function getAllCountry()
     {
-    	$allCountry = PackageCountry::all();
+    	// $allCountry = PackageCountry::all();
+
+        $allCountry = DB::table('tour_packages as tp')
+        ->select('tp.PACKAGE_NAME', DB::raw('COUNT(pb.PACKAGE_ID) as NumberOfBooking'))
+        ->leftJoin('package_bookings as pb', 'pb.PACKAGE_ID', '=', 'tp.id')
+        ->groupBy('tp.PACKAGE_NAME','tp.SLUG')
+        ->orderBy('NumberOfBooking','DESC')
+        ->limit(3)
+        ->get();
 
         // $total = $allCountry->count();
         // $countryChartData = "";
@@ -43,11 +51,11 @@ class DashboardController extends Controller{
         $countryChartData = [];
         foreach($allCountry as $key => $countryData){
             // $countryChartData[$key] = "{'value'=>".$countryData->id.",'name'=>".$countryData->COUNTRY_NAME."}";
-            $countryChartData[$key] = array("value" => $countryData->id,"name" => "$countryData->COUNTRY_NAME",);
+            $countryChartData[$key] = array("value" => $countryData->NumberOfBooking,"name" => "$countryData->PACKAGE_NAME",);
         }
 
         return $countryChartData;
- 
+
     }
 
     public static function pieChart()
