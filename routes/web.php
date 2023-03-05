@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\HomePage\HomePageController;
 use App\Http\Controllers\Admin\HomePage\AirlinePartnerController;
 use App\Http\Controllers\Admin\HomePage\AboutSectionOneController;
 use App\Http\Controllers\Admin\HomePage\AboutSectionTwoController;
-use App\Http\Controllers\Admin\Bookings\CUstomerBookingController;
+use App\Http\Controllers\Admin\Bookings\CustomerBookingController;
 
 
 use App\Http\Controllers\Frontend\Home\HomeController;

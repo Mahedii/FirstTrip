@@ -227,7 +227,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="popular-tours__content">
-                                                        <h3 class="popular-tours__title"><a href="">{{$similarPackages->PACKAGE_NAME}}</a></h3>
+                                                        <h3 class="popular-tours__title"><a href="{{ route('tour.details',['id' => $similarPackages->id, 'slug' => $similarPackages->SLUG]) }}">{{$similarPackages->PACKAGE_NAME}}</a></h3>
                                                         <p class="popular-tours__rate"><span>{{$similarPackages->COST}}</span> / Per Person</p>
                                                         <ul class="popular-tours__meta list-unstyled">
                                                             <li><a href="{{ route('tour.details',['id' => $similarPackages->id, 'slug' => $similarPackages->SLUG]) }}">{{$similarPackages->DURATION}}</a></li>

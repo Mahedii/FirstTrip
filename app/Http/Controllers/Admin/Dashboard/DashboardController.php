@@ -24,52 +24,33 @@ use App\Models\Country\PackageCountry;
 class DashboardController extends Controller{
 
 
-    public static function getAllCountry()
+    public static function getTopTenPackage()
     {
-    	// $allCountry = PackageCountry::all();
 
-        // $allCountry = DB::table('tour_packages as tp')
+        // $topTenPackages = DB::table('tour_packages as tp')
         // ->select('tp.PACKAGE_NAME', DB::raw('COUNT(pb.PACKAGE_ID) as NumberOfBooking'))
         // ->leftJoin('package_bookings as pb', 'pb.PACKAGE_ID', '=', 'tp.id')
         // ->groupBy('tp.PACKAGE_NAME','tp.SLUG')
         // ->orderBy('NumberOfBooking','DESC')
-        // ->limit(3)
+        // ->limit(10)
         // ->get();
 
-        $allCountry = DB::table('package_bookings as pb')
+        $topTenPackages = DB::table('package_bookings as pb')
         ->select('tp.PACKAGE_NAME', DB::raw('COUNT(pb.PACKAGE_ID) as NumberOfBooking'))
         ->leftJoin('tour_packages as tp', 'tp.id', '=', 'pb.PACKAGE_ID')
         ->groupBy('tp.PACKAGE_NAME','tp.SLUG')
         ->orderBy('NumberOfBooking','DESC')
+        ->limit(10)
         ->get();
 
-        // $total = $allCountry->count();
-        // $countryChartData = "";
-        // foreach($allCountry as $key => $countryData){
-        //     $countryChartData = $countryChartData."{name:'".$countryData->COUNTRY_NAME."',y:".$countryData->id."},";
-        // }
-
-        // $countryChartData = [];
-        // foreach($allCountry as $key => $countryData){
-        //     $countryChartData[$key] = "{name:'".$countryData->COUNTRY_NAME."',y:".$countryData->id."}";
-        //     // $countryChartData[$key] = array("name" => "$countryData->COUNTRY_NAME","y" => "$countryData->id",);
-        // }
-
-        $countryChartData = [];
-        foreach($allCountry as $key => $countryData){
-            // $countryChartData[$key] = "{'value'=>".$countryData->id.",'name'=>".$countryData->COUNTRY_NAME."}";
-            $countryChartData[$key] = array("value" => $countryData->NumberOfBooking,"name" => "$countryData->PACKAGE_NAME",);
+        $topTenPackageData = [];
+        foreach($topTenPackages as $key => $packageData){
+            // $topTenPackageData[$key] = "{'value'=>".$packageData->id.",'name'=>".$packageData->COUNTRY_NAME."}";
+            $topTenPackageData[$key] = array("value" => $packageData->NumberOfBooking,"name" => "$packageData->PACKAGE_NAME",);
         }
 
-        return $countryChartData;
+        return $topTenPackageData;
 
-    }
-
-    public static function pieChart()
-    {
-    	$Laptop = PackageCountry::where('product_type','Laptop')->get();
-
-    	return view('echart',compact('laptop_count','phone_count','desktop_count'));
     }
 
     public static function totalBookingReq()
